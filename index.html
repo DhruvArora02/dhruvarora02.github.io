@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dhruv Arora — Software & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Geist+Mono:wght@300;400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #111111;
-      --surface: #1a1a1a;
-      --border: #2a2a2a;
-      --accent: #4ade80;
-      --text: #e8e8e4;
-      --muted: #888880;
-      --light: #555550;
+      --bg: #0c0c0c;
+      --surface: #141414;
+      --surface2: #1a1a1a;
+      --border: #242424;
+      --border2: #2e2e2e;
+      --accent: #a8ff78;
+      --accent2: #78c8ff;
+      --text: #f0f0ec;
+      --muted: #7a7a72;
+      --light: #3a3a36;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,188 +26,349 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Geist', sans-serif;
+      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       line-height: 1.65;
+      overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 56px;
-      background: rgba(17,17,17,0.92);
-      backdrop-filter: blur(12px);
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(12,12,12,0.88);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-weight: 600;
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text);
       text-decoration: none;
+      letter-spacing: -0.02em;
     }
-
-    .nav-links { display: flex; gap: 36px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
       font-size: 13px;
+      font-weight: 400;
       transition: color 0.15s;
+      letter-spacing: 0.01em;
     }
     .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 7px 18px;
+      background: var(--accent);
+      color: #0c0c0c !important;
+      font-weight: 500 !important;
+      border-radius: 3px;
+      transition: opacity 0.15s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: #0c0c0c !important; }
 
-    /* LAYOUT */
-    .page { max-width: 860px; margin: 0 auto; padding: 0 40px; }
-
-    /* HERO */
+    /* ── HERO ── */
     #hero {
-      padding: 140px 0 80px;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 48px 80px;
+      position: relative;
+      overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
 
-    .hero-name {
-      font-family: 'Lora', serif;
-      font-weight: 600;
-      font-size: clamp(38px, 5vw, 56px);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 16px;
+    /* dot grid */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, #2a2a2a 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.5;
+      pointer-events: none;
     }
 
-    .hero-title {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 20px;
-      font-weight: 300;
+    /* glow */
+    .hero-glow {
+      position: absolute;
+      top: -120px; right: -80px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(168,255,120,0.07) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .hero-title strong { color: var(--accent); font-weight: 500; }
+
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent);
+    }
 
     .hero-bio {
-      max-width: 560px;
+      max-width: 480px;
       color: var(--muted);
       font-size: 15px;
-      line-height: 1.75;
-      margin-bottom: 32px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.35s forwards;
+    }
+    .hero-bio strong { color: var(--text); font-weight: 400; }
+
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.5s forwards;
     }
 
-    .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
-
     .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 9px 20px;
-      font-family: 'Geist', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px;
+      font-family: 'DM Sans', sans-serif;
       font-size: 13px;
       font-weight: 500;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 3px;
       transition: all 0.15s;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary { background: var(--accent); color: #0c0c0c; }
+    .btn-primary:hover { background: #c8ffa0; }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+    .btn-ghost:hover { border-color: var(--muted); }
+
+    /* hero photo */
+    .hero-photo {
+      opacity: 0;
+      animation: fadeIn 0.8s 0.6s forwards;
+      flex-shrink: 0;
+    }
+    .photo-frame {
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      background: var(--surface);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px rgba(168,255,120,0.15);
+    }
+    .photo-placeholder {
+      font-family: 'Fraunces', serif;
+      font-size: 64px;
+      font-weight: 600;
+      color: var(--border2);
+      user-select: none;
+    }
+    .photo-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
-    .btn-primary { background: var(--text); color: #111111; }
-    .btn-primary:hover { background: #ffffff; }
-    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--muted); }
+    /* currently bar */
+    .currently-bar {
+      margin-top: 56px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.7s 0.65s forwards;
+      max-width: 560px;
+    }
+    .currently-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    .currently-bar strong { color: var(--text); font-weight: 500; }
 
-    /* SECTIONS */
-    section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
 
-    .section-header {
-      display: flex; align-items: baseline; gap: 16px;
-      margin-bottom: 44px;
+    /* ── LAYOUT ── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+
+    /* ── SECTION TEMPLATE ── */
+    section { padding: 88px 0; border-bottom: 1px solid var(--border); }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
 
     h2 {
-      font-family: 'Lora', serif;
+      font-family: 'Fraunces', serif;
       font-weight: 600;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      white-space: nowrap;
+      font-size: clamp(28px, 3.5vw, 42px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 52px;
     }
+    h2 em { font-style: italic; font-weight: 300; color: var(--muted); }
 
-    .section-line { flex: 1; height: 1px; background: var(--border); }
-
-    /* ABOUT */
+    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 80px;
       align-items: start;
     }
 
     .about-text p {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 14px;
+      line-height: 1.85;
+      margin-bottom: 16px;
     }
+    .about-text strong { color: var(--text); font-weight: 400; }
 
-    .edu-degree { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
-    .edu-school { font-size: 13px; color: var(--accent); margin-bottom: 2px; }
-    .edu-gpa { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px;
+    }
+    .edu-school {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .edu-degree {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .edu-meta { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
     .edu-courses {
-      font-family: 'Geist Mono', monospace;
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
       color: var(--light);
       line-height: 1.9;
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
 
-    /* EXPERIENCE */
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; }
+
     .exp-item {
       display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 32px;
-      padding: 28px 0;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
     }
-    .exp-item:last-child { border-bottom: none; }
+    .exp-item:first-child { border-top: 1px solid var(--border); }
+    .exp-item:hover { background: rgba(255,255,255,0.01); }
 
+    .exp-meta { padding-top: 3px; }
     .exp-date {
-      font-family: 'Geist Mono', monospace;
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
-      color: var(--light);
-      padding-top: 2px;
+      color: var(--muted);
       line-height: 1.6;
+      margin-bottom: 8px;
     }
-
     .exp-badge {
       display: inline-block;
-      margin-top: 6px;
       font-size: 10px;
       letter-spacing: 0.04em;
       padding: 2px 8px;
       border-radius: 2px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--surface2);
+      border: 1px solid var(--border2);
       color: var(--muted);
     }
     .exp-badge.green {
-      background: #0d2a1a;
-      border-color: #1e5c36;
+      background: rgba(168,255,120,0.06);
+      border-color: rgba(168,255,120,0.2);
       color: var(--accent);
     }
 
-    .exp-content h3 { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
-    .exp-company { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .exp-content h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+    .exp-company { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .exp-bullets li {
       font-size: 13px; color: var(--muted);
-      padding-left: 14px; position: relative; line-height: 1.65;
+      padding-left: 16px; position: relative; line-height: 1.65;
     }
     .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--light); }
 
-    /* PROJECTS — index list */
-    .project-index {
-      display: flex; flex-direction: column;
-    }
+    /* ── PROJECTS ── */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
 
+    /* project index row */
     .project-row {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -214,80 +378,82 @@
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: inherit;
-      cursor: pointer;
+      transition: background 0.15s;
     }
     .project-row:first-child { border-top: 1px solid var(--border); }
+    .project-row:hover { background: rgba(255,255,255,0.015); }
     .project-row:hover .project-row-title { color: var(--accent); }
-
-    .project-row-left { display: flex; align-items: baseline; gap: 16px; }
-
+    .project-row-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .project-row-title {
+      font-family: 'Fraunces', serif;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
       transition: color 0.15s;
     }
-
     .project-row-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-
     .tag {
-      font-family: 'Geist Mono', monospace;
-      font-size: 11px;
-      padding: 2px 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 2px;
       color: var(--muted);
     }
-
-    .project-row-arrow { font-size: 13px; color: var(--light); }
+    .project-row-arrow { font-size: 12px; color: var(--light); font-family: 'DM Mono', monospace; white-space: nowrap; }
     .project-row:hover .project-row-arrow { color: var(--accent); }
 
-    /* CASE STUDIES */
+    /* ── CASE STUDIES ── */
     .case-study {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
+      margin-top: 2px;
+      padding: 48px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 16px;
     }
-    .case-study:last-child { border-bottom: none; }
+    .case-study:last-child { margin-bottom: 0; }
 
-    .cs-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
+    .cs-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
       gap: 24px;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
     }
 
     .cs-num {
-      font-family: 'Geist Mono', monospace;
-      font-size: 11px;
-      color: var(--light);
-      margin-bottom: 6px;
-    }
-
-    .cs-title {
-      font-family: 'Lora', serif;
-      font-weight: 600;
-      font-size: 22px;
-      letter-spacing: -0.01em;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 8px;
     }
 
-    .cs-subtitle {
-      font-size: 13px;
-      color: var(--muted);
+    .cs-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
     }
+
+    .cs-subtitle { font-size: 13px; color: var(--muted); }
 
     .cs-github {
       display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'Geist Mono', monospace;
+      font-family: 'DM Mono', monospace;
       font-size: 11px;
       color: var(--muted);
       text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 6px 14px;
+      border: 1px solid var(--border2);
+      padding: 7px 16px;
       border-radius: 3px;
       white-space: nowrap;
       transition: all 0.15s;
       flex-shrink: 0;
-      margin-top: 4px;
     }
     .cs-github:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -299,83 +465,61 @@
     }
 
     .cs-block-label {
-      font-family: 'Geist Mono', monospace;
+      font-family: 'DM Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--light);
+      color: var(--muted);
       margin-bottom: 10px;
     }
 
-    .cs-block-text {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .cs-block-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
 
-    .cs-challenge {
-      margin-top: 24px;
-      padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .cs-insight {
+      margin-top: 4px;
+      padding: 20px 24px;
+      background: rgba(168,255,120,0.04);
+      border: 1px solid rgba(168,255,120,0.12);
       border-left: 2px solid var(--accent);
       border-radius: 0 4px 4px 0;
     }
-
-    .cs-challenge-label {
-      font-family: 'Geist Mono', monospace;
+    .cs-insight-label {
+      font-family: 'DM Mono', monospace;
       font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 8px;
     }
+    .cs-insight-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
 
-    .cs-challenge-text {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .cs-stack { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px; }
 
-    .cs-stack {
-      margin-top: 24px;
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-
-    /* viz placeholder */
-    .cs-viz-placeholder {
-      margin-top: 28px;
-      border: 1px dashed var(--border);
-      border-radius: 4px;
-      padding: 32px 24px;
-      text-align: center;
-      background: var(--surface);
-    }
-    .cs-viz-label {
-      font-family: 'Geist Mono', monospace;
-      font-size: 11px;
-      color: var(--light);
-      margin-bottom: 6px;
-    }
-    .cs-viz-hint {
-      font-size: 12px;
-      color: var(--light);
-      opacity: 0.7;
-    }
-
-    /* CONTACT */
+    /* ── CONTACT ── */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      gap: 80px;
       align-items: start;
     }
 
-    .contact-text p { color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .contact-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: clamp(28px, 3.5vw, 42px);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .contact-headline em { font-style: italic; font-weight: 300; color: var(--accent); }
+
+    .contact-sub { color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+    .contact-links { display: flex; flex-direction: column; }
 
     .contact-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--border);
       text-decoration: none;
       color: var(--text);
@@ -383,47 +527,67 @@
     }
     .contact-link:first-child { border-top: 1px solid var(--border); }
     .contact-link:hover { color: var(--accent); }
+    .contact-link:hover .cl-label { color: var(--accent); }
 
-    .contact-link-label {
-      font-family: 'Geist Mono', monospace;
-      font-size: 11px;
-      color: var(--light);
+    .cl-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.07em;
       width: 80px;
+      transition: color 0.15s;
     }
-    .contact-link:hover .contact-link-label { color: var(--accent); }
-    .contact-link-value { font-size: 13px; flex: 1; }
-    .contact-link-arrow { font-size: 12px; color: var(--light); }
+    .cl-value { font-size: 13px; flex: 1; }
+    .cl-arrow { font-size: 12px; color: var(--light); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 56px;
-      display: flex; justify-content: space-between;
+      padding: 28px 48px;
+      display: flex; justify-content: space-between; align-items: center;
       font-size: 12px; color: var(--light);
+      font-family: 'DM Mono', monospace;
     }
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* RESPONSIVE */
-    @media (max-width: 680px) {
-      nav { padding: 16px 24px; }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
       .nav-links { display: none; }
+      #hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-photo { display: none; }
       .page { padding: 0 24px; }
       .about-grid, .contact-grid, .cs-body { grid-template-columns: 1fr; gap: 32px; }
-      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .exp-item { grid-template-columns: 1fr; gap: 10px; }
       .project-row { grid-template-columns: 1fr; }
       .project-row-arrow { display: none; }
-      .cs-header { flex-direction: column; }
-      footer { padding: 20px 24px; flex-direction: column; gap: 4px; }
+      .case-study { padding: 28px 20px; }
+      .cs-top { flex-direction: column; }
+      footer { padding: 24px; flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Dhruv Arora</a>
   <div class="nav-links">
@@ -431,217 +595,258 @@
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
+    <a href="https://dhruvarora02.github.io/Resume-DhruvArora.pdf" target="_blank" class="nav-cta">Resume</a>
   </div>
 </nav>
 
-<div class="page">
-
-  <!-- HERO -->
-  <div id="hero">
-    <div class="hero-name">Dhruv Arora</div>
-    <div class="hero-title">CS & Data Science @ <strong>UW–Madison</strong> · Graduating May 2026</div>
-    <p class="hero-bio">
-      Building scalable software systems and applied machine learning pipelines —
-      from full-stack web applications to data engineering workflows and LLM training datasets.
-      Seeking full-time roles in software engineering, data, or applied AI.
-    </p>
-    <div class="hero-links">
-      <a href="https://dhruvarora02.github.io/Resume-DhruvArora.pdf" class="btn btn-primary" target="_blank">Resume ↓</a>
-      <a href="https://github.com/DhruvArora02" class="btn btn-outline" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/dhruv-ar/" class="btn btn-outline" target="_blank">LinkedIn</a>
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Available · May 2026</div>
+      <h1>Software &<br><em>AI Engineer</em></h1>
+      <p class="hero-bio">
+        I'm Dhruv — a senior at <strong>UW–Madison</strong> double majoring in CS & Data Science.
+        I build scalable ML pipelines, full-stack systems, and data engineering workflows.
+        Most recently: on-device AI for Qualcomm on Snapdragon NPUs.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="https://github.com/DhruvArora02" target="_blank" class="btn btn-ghost">GitHub</a>
+        <a href="https://www.linkedin.com/in/dhruv-ar/" target="_blank" class="btn btn-ghost">LinkedIn</a>
+      </div>
+      <div class="currently-bar">
+        <div class="currently-dot"></div>
+        <span><strong>Currently:</strong> Building VibeCheck — an on-device music recommender for Qualcomm Snapdragon, and mentoring 600+ students in AI & DBMS at UW–Madison.</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <!-- Replace src below with your actual photo URL, e.g. src="photo.jpg" -->
+        <!-- <img src="YOUR_PHOTO_URL_HERE" alt="Dhruv Arora"> -->
+        <div class="photo-placeholder">DA</div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="page">
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="section-header"><h2>About</h2><div class="section-line"></div></div>
-    <div class="about-grid reveal">
-      <div class="about-text">
-        <p>I'm a senior at the University of Wisconsin–Madison pursuing a double major in Computer Science and Data Science, with a Certificate in Economic Analytics.</p>
-        <p>My work spans LLM training data curation, full-stack web development, data engineering on Databricks, and applied machine learning. I'm especially drawn to problems where clean data architecture and smart modeling intersect.</p>
-        <p>Outside of work, I compete in Kaggle competitions and university hackathons as part of the DotData and Software Development clubs at UW–Madison.</p>
+    <div class="section-label">About</div>
+    <h2>Who I am,<br><em>what I care about</em></h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a senior at the University of Wisconsin–Madison pursuing a double major in Computer Science and Data Science,
+          with a Certificate in Economic Analytics — graduating May 2026.
+        </p>
+        <p>
+          What pulls me in is the gap between raw data and something useful. Whether that's designing a distributed ETL pipeline
+          that handles tens of millions of rows without breaking, or figuring out how to run MobileBERT on a phone's NPU
+          without sacrificing embedding quality — I like problems where the architecture decisions actually matter.
+        </p>
+        <p>
+          Outside of work, I compete in Kaggle competitions and hackathons through the DotData and Software Development clubs at UW–Madison,
+          and mentor 600+ students in AI and DBMS.
+        </p>
       </div>
-      <div>
-        <div class="edu-degree">B.S. Computer Science & Data Science (Double Major)</div>
-        <div class="edu-school">University of Wisconsin–Madison</div>
-        <div class="edu-gpa">2022 – May 2026 · GPA: 3.5 · Econ Analytics Certificate</div>
-        <div class="edu-courses">Data Structures & Algorithms · Artificial Intelligence · Software Engineering · Database Management Systems · Data Science Modelling · Econometrics · Machine Organization · Human-Computer Interaction · Linear Algebra · Discrete Maths</div>
+      <div class="reveal">
+        <div class="edu-card">
+          <div class="edu-school">University of Wisconsin–Madison</div>
+          <div class="edu-degree">B.S. Computer Science & Data Science</div>
+          <div class="edu-meta">Double Major · 2022 – May 2026 · GPA: 3.5 · Econ Analytics Certificate</div>
+          <div class="edu-courses">
+            Data Structures & Algorithms · Artificial Intelligence · Software Engineering ·
+            Database Management Systems · Data Science Modelling · Econometrics ·
+            Machine Organization · Human-Computer Interaction · Linear Algebra · Discrete Maths
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <div class="section-header"><h2>Experience</h2><div class="section-line"></div></div>
+    <div class="section-label">Experience</div>
+    <h2>Where I've<br><em>worked</em></h2>
+    <div class="exp-list">
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jan 2026 – Present<br><span class="exp-badge green">Capstone</span></div>
-      <div class="exp-content">
-        <h3>Machine Learning Intern</h3>
-        <div class="exp-company">Qualcomm · Industry-Sponsored Capstone · Madison, WI</div>
-        <ul class="exp-bullets">
-          <li>Designing a multimodal real-time recommendation pipeline mapping image, text, voice & context to personalized Spotify playlists.</li>
-          <li>Evaluating on-device vs hybrid inference using Qualcomm AI Hub models on Snapdragon NPUs, balancing performance, privacy, and latency.</li>
-          <li>Defining system architecture with OAuth-based Spotify access, playlist generation, and Snapdragon-targeted Android deployment.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jan 2026 – Present</div>
+          <span class="exp-badge green">Capstone</span>
+        </div>
+        <div class="exp-content">
+          <h3>Machine Learning Intern</h3>
+          <div class="exp-company">Qualcomm · Industry-Sponsored Capstone · Madison, WI</div>
+          <ul class="exp-bullets">
+            <li>Designing a multimodal real-time recommendation pipeline mapping image, text, voice & context to personalized Spotify playlists.</li>
+            <li>Evaluating on-device vs hybrid inference using Qualcomm AI Hub models on Snapdragon NPUs, balancing performance, privacy, and latency.</li>
+            <li>Defining system architecture with OAuth-based Spotify access, playlist generation, and Snapdragon-targeted Android deployment.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Aug 2025 – Present<br><span class="exp-badge">Research</span></div>
-      <div class="exp-content">
-        <h3>Undergraduate Research Assistant — LLM Training</h3>
-        <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
-        <ul class="exp-bullets">
-          <li>Verified and analyzed AI-generated web navigation tasks, tracking step sequences, parallelization patterns, and URL trajectories.</li>
-          <li>Refined ill-posed prompts and produced structured JSON datasets to ensure reproducible data for LLM training and evaluation.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Aug 2025 – Present</div>
+          <span class="exp-badge">Research</span>
+        </div>
+        <div class="exp-content">
+          <h3>Undergraduate Research Assistant — LLM Training</h3>
+          <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
+          <ul class="exp-bullets">
+            <li>Verified and analyzed AI-generated web navigation tasks, tracking step sequences, parallelization patterns, and URL trajectories.</li>
+            <li>Refined ill-posed prompts and produced structured JSON datasets to ensure reproducible data for LLM training and evaluation.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jun – Aug 2025<br><span class="exp-badge green">Internship</span></div>
-      <div class="exp-content">
-        <h3>Data Engineering Intern</h3>
-        <div class="exp-company">Cencora (formerly AmerisourceBergen) · Conshohocken, PA</div>
-        <ul class="exp-bullets">
-          <li>Automated SAP spool parsing in Python, standardizing inconsistent log formats and cutting manual effort by ~60%.</li>
-          <li>Integrated pipelines with Databricks and Delta Lake to optimize ETL workflows and reduce storage overhead.</li>
-          <li>Automated scheduled runs with Airflow and SQL validation checks; built Power BI dashboards for stakeholder insights.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jun – Aug 2025</div>
+          <span class="exp-badge green">Internship</span>
+        </div>
+        <div class="exp-content">
+          <h3>Data Engineering Intern</h3>
+          <div class="exp-company">Cencora (formerly AmerisourceBergen) · Conshohocken, PA</div>
+          <ul class="exp-bullets">
+            <li>Automated SAP spool parsing in Python, standardizing inconsistent log formats and cutting manual effort by ~60%.</li>
+            <li>Integrated pipelines with Databricks and Delta Lake to optimize ETL workflows and reduce storage overhead.</li>
+            <li>Automated scheduled runs with Airflow and SQL validation checks; built Power BI dashboards for stakeholder insights.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jan 2025 – Present<br><span class="exp-badge">Teaching</span></div>
-      <div class="exp-content">
-        <h3>Peer Mentor — AI and DBMS</h3>
-        <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
-        <ul class="exp-bullets">
-          <li>Mentored 600+ students in AI & DBMS courses covering search algorithms, ML basics, SQL, schema design, and query optimization.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jan 2025 – Present</div>
+          <span class="exp-badge">Teaching</span>
+        </div>
+        <div class="exp-content">
+          <h3>Peer Mentor — AI and DBMS</h3>
+          <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
+          <ul class="exp-bullets">
+            <li>Mentored 600+ students in AI & DBMS courses covering search algorithms, ML basics, SQL, schema design, and query optimization.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jun – Aug 2024<br><span class="exp-badge green">Internship</span></div>
-      <div class="exp-content">
-        <h3>Full Stack Developer Intern</h3>
-        <div class="exp-company">Wipro Limited · India</div>
-        <ul class="exp-bullets">
-          <li>Developed and optimized Java 8 applications with JDBC/MySQL, improving CRUD efficiency by 28%.</li>
-          <li>Implemented DAO patterns and secure database interactions using prepared statements, enhancing maintainability and scalability.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jun – Aug 2024</div>
+          <span class="exp-badge green">Internship</span>
+        </div>
+        <div class="exp-content">
+          <h3>Full Stack Developer Intern</h3>
+          <div class="exp-company">Wipro Limited · India</div>
+          <ul class="exp-bullets">
+            <li>Developed and optimized Java 8 applications with JDBC/MySQL, improving CRUD efficiency by 28%.</li>
+            <li>Implemented DAO patterns and secure database interactions using prepared statements, enhancing maintainability and scalability.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jan – May 2024<br><span class="exp-badge">Research</span></div>
-      <div class="exp-content">
-        <h3>Undergraduate Researcher</h3>
-        <div class="exp-company">Informatics Skunkworks · Prof. Dane Morgan · Madison, WI</div>
-        <ul class="exp-bullets">
-          <li>Built and evaluated ML models using MAST-ML and scikit-learn for engineering datasets, applying cross-validation and hyperparameter tuning.</li>
-          <li>Delivered weekly reports on model improvement, ethical data cleaning, and reproducibility using Python and Google Colab.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jan – May 2024</div>
+          <span class="exp-badge">Research</span>
+        </div>
+        <div class="exp-content">
+          <h3>Undergraduate Researcher</h3>
+          <div class="exp-company">Informatics Skunkworks · Prof. Dane Morgan · Madison, WI</div>
+          <ul class="exp-bullets">
+            <li>Built and evaluated ML models using MAST-ML and scikit-learn for engineering datasets, applying cross-validation and hyperparameter tuning.</li>
+            <li>Delivered weekly reports on model improvement, ethical data cleaning, and reproducibility using Python and Google Colab.</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="exp-item reveal">
-      <div class="exp-date">Jun – Jul 2023<br><span class="exp-badge green">Internship</span></div>
-      <div class="exp-content">
-        <h3>Software Development Intern</h3>
-        <div class="exp-company">Prologic First India Pvt. Ltd. · India</div>
-        <ul class="exp-bullets">
-          <li>Built a Python chatbot integrating Wit.ai, Snips.ai, and Zapier, improving accuracy by 23% and boosting user engagement.</li>
-          <li>Enhanced accessibility with speech-to-text conversion via MediaRecorder API.</li>
-        </ul>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Jun – Jul 2023</div>
+          <span class="exp-badge green">Internship</span>
+        </div>
+        <div class="exp-content">
+          <h3>Software Development Intern</h3>
+          <div class="exp-company">Prologic First India Pvt. Ltd. · India</div>
+          <ul class="exp-bullets">
+            <li>Built a Python chatbot integrating Wit.ai, Snips.ai, and Zapier, improving accuracy by 23% and boosting user engagement.</li>
+            <li>Enhanced accessibility with speech-to-text conversion via MediaRecorder API.</li>
+          </ul>
+        </div>
       </div>
+
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-header"><h2>Projects</h2><div class="section-line"></div></div>
+    <div class="section-label">Projects</div>
+    <h2>Things I've<br><em>built</em></h2>
 
-    <!-- index -->
-    <div class="project-index reveal">
-      <a href="#cs-qualcomm" class="project-row">
+    <!-- Index -->
+    <div class="projects-list reveal">
+      <a href="#cs-vibecheck" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">VibeCheck — Music Recommender App</div>
+          <span class="project-row-title">VibeCheck — Music Recommender App</span>
           <div class="project-row-tags">
             <span class="tag">TFLite</span><span class="tag">MobileBERT</span><span class="tag">Snapdragon NPU</span><span class="tag">Kotlin</span>
           </div>
         </div>
-        <div class="project-row-arrow">↓ Case study</div>
+        <div class="project-row-arrow">↓ case study</div>
       </a>
-
       <a href="#cs-puzzlelab" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">Puzzle Lab</div>
+          <span class="project-row-title">Puzzle Lab</span>
           <div class="project-row-tags">
             <span class="tag">Next.js</span><span class="tag">Java / Quarkus</span><span class="tag">MySQL</span><span class="tag">Docker</span>
           </div>
         </div>
-        <div class="project-row-arrow">↓ Case study</div>
+        <div class="project-row-arrow">↓ case study</div>
       </a>
-
-      <a href="#cs-nominate" class="project-row">
-        <div class="project-row-left">
-          <div class="project-row-title">NOMinate — Smart Meal Planner</div>
-          <div class="project-row-tags">
-            <span class="tag">React</span>
-            <span class="tag">Flask</span>
-            <span class="tag">OpenAI</span>
-            <span class="tag">Tailwind</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↓ Case study</div>
-      </a>
-     
       <a href="#cs-nyctaxi" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">NYC Taxi Analysis</div>
+          <span class="project-row-title">NYC Taxi Analysis</span>
           <div class="project-row-tags">
             <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Databricks</span><span class="tag">MLlib</span>
           </div>
         </div>
-        <div class="project-row-arrow">↓ Case study</div>
+        <div class="project-row-arrow">↓ case study</div>
       </a>
-
       <a href="https://github.com/DhruvArora02/RL-Powered-Trading-Strategy-Optimizer" target="_blank" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">RL Trading Strategy Optimizer</div>
+          <span class="project-row-title">RL Trading Strategy Optimizer</span>
           <div class="project-row-tags">
             <span class="tag">PyTorch</span><span class="tag">DQN</span><span class="tag">Python</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
       </a>
-
       <a href="https://github.com/DhruvArora02/PCA-Image-Compression" target="_blank" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">PCA Image Compression</div>
+          <span class="project-row-title">PCA Image Compression</span>
           <div class="project-row-tags">
             <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">PCA</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
       </a>
-
       <a href="https://github.com/DhruvArora02/City-Traffic-Optimizer" target="_blank" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">City Traffic Optimizer</div>
+          <span class="project-row-title">City Traffic Optimizer</span>
           <div class="project-row-tags">
             <span class="tag">Python</span><span class="tag">Ford-Fulkerson</span><span class="tag">Graph Algorithms</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
       </a>
-
       <a href="https://github.com/DhruvArora02/FashionMNIST-Classifier-PyTorch" target="_blank" class="project-row">
         <div class="project-row-left">
-          <div class="project-row-title">FashionMNIST Classifier</div>
+          <span class="project-row-title">FashionMNIST Classifier</span>
           <div class="project-row-tags">
             <span class="tag">PyTorch</span><span class="tag">Neural Networks</span><span class="tag">Python</span>
           </div>
@@ -650,187 +855,130 @@
       </a>
     </div>
 
-    <!-- CASE STUDY 0 — QUALCOMM -->
-    <div class="case-study reveal" id="cs-qualcomm">
-      <div class="cs-header">
-        <div>
-          <div class="cs-num">Case Study 01 · In Progress</div>
-          <div class="cs-title">VibeCheck — Music Recommender App</div>
-          <div class="cs-subtitle">Qualcomm Industry-Sponsored Capstone · Machine Learning Intern · Jan 2026 – Present</div>
-        </div>
-        <a href="https://github.com/chiarakenagy3/snapbadgers" target="_blank" class="cs-github">↗ View on GitHub</a>
-      </div>
+    <!-- Case Studies -->
+    <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
 
-      <div class="cs-body">
-        <div>
-          <div class="cs-block-label">What it is</div>
-          <div class="cs-block-text">An Android app that recommends songs by fusing three live input signals — a text query, an optional camera frame, and real device sensor readings (accelerometer, light, GPS, clock) — through a 6-stage on-device ML pipeline. All inference runs locally using TensorFlow Lite with NNAPI delegation for NPU acceleration on Qualcomm Snapdragon SoCs. No server required.</div>
+      <div class="case-study reveal" id="cs-vibecheck">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 01 · In Progress</div>
+            <div class="cs-title">VibeCheck — Music Recommender App</div>
+            <div class="cs-subtitle">Qualcomm Industry-Sponsored Capstone · Machine Learning Intern · Jan 2026 – Present</div>
+          </div>
+          <a href="https://github.com/chiarakenagy3/snapbadgers" target="_blank" class="cs-github">↗ GitHub</a>
         </div>
-        <div>
-          <div class="cs-block-label">The pipeline</div>
-          <div class="cs-block-text">
-            Text is encoded by MobileBERT into a 128-d embedding. Images go through EfficientNet-B0 (int8 quantized). Sensor readings are projected to 32-d via a small MLP. The three modalities are aligned to 128-d and fused via weighted average (vision 60%, text 25%, sensors 15%), then projected into song embedding space and ranked by cosine similarity against pre-computed Spotify track embeddings.
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">An Android app that recommends songs by fusing three live input signals — a text query, an optional camera frame, and real device sensor readings (accelerometer, light, GPS, clock) — through a 6-stage on-device ML pipeline. All inference runs locally using TensorFlow Lite with NNAPI delegation for NPU acceleration on Qualcomm Snapdragon. No server required.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">The pipeline</div>
+            <div class="cs-block-text">Text is encoded by MobileBERT into a 128-d embedding. Images go through EfficientNet-B0 (int8 quantized). Sensor readings are projected to 32-d via a small MLP. The three modalities are fused via weighted average (vision 60%, text 25%, sensors 15%), then ranked by cosine similarity against pre-computed Spotify track embeddings.</div>
           </div>
         </div>
-      </div>
-
-      <div class="cs-challenge">
-        <div class="cs-challenge-label">The key engineering decisions</div>
-        <div class="cs-challenge-text">
-          Running MobileBERT, EfficientNet-B0, and a sensor MLP concurrently on a phone required careful threading — the three encoders run in parallel coroutines, with fusion happening only after all three complete. Getting NNAPI delegation right for Qualcomm's Hexagon NPU added another layer: model quantization had to be tight enough to benefit from NPU acceleration without degrading embedding quality. We also built graceful fallback heuristic encoders for when TFLite assets aren't available (e.g. on emulators), so the full pipeline stays testable without physical hardware. The eval suite covers latency, accuracy, memory, and pipeline correctness across 12 test classes.
+        <div class="cs-insight">
+          <div class="cs-insight-label">Key engineering decision</div>
+          <div class="cs-insight-text">Running MobileBERT, EfficientNet-B0, and a sensor MLP concurrently required careful threading — the three encoders run in parallel coroutines, fusing only after all three complete. Getting NNAPI delegation right for Qualcomm's Hexagon NPU required tight model quantization without degrading embedding quality. We also built graceful fallback heuristic encoders for emulator testing, so the full pipeline stays testable without physical hardware.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">TensorFlow Lite</span>
+          <span class="tag">MobileBERT</span><span class="tag">EfficientNet-B0</span><span class="tag">NNAPI / Hexagon NPU</span>
+          <span class="tag">Spotify API</span><span class="tag">Coroutines</span><span class="tag">Python</span>
         </div>
       </div>
 
-      <div class="cs-stack">
-        <span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">TensorFlow Lite</span>
-        <span class="tag">MobileBERT</span><span class="tag">EfficientNet-B0</span><span class="tag">NNAPI / Hexagon NPU</span>
-        <span class="tag">Spotify API</span><span class="tag">Coroutines</span><span class="tag">Python</span>
-      </div>
-    </div>
-
-    <!-- CASE STUDY 2 — PUZZLE LAB -->
-    <div class="case-study reveal" id="cs-puzzlelab">
-      <div class="cs-header">
-        <div>
-          <div class="cs-num">Case Study 02</div>
-          <div class="cs-title">Puzzle Lab</div>
-          <div class="cs-subtitle">Full-stack crossword puzzle platform · Team of 6 · UW–Madison</div>
+      <div class="case-study reveal" id="cs-puzzlelab">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 02</div>
+            <div class="cs-title">Puzzle Lab</div>
+            <div class="cs-subtitle">Full-stack crossword puzzle platform · Team of 6 · UW–Madison</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/PuzzleLab_App" target="_blank" class="cs-github">↗ GitHub</a>
         </div>
-        <a href="https://github.com/DhruvArora02/PuzzleLab_App" target="_blank" class="cs-github">↗ View on GitHub</a>
-      </div>
-
-      <div class="cs-body">
-        <div>
-          <div class="cs-block-label">What it is</div>
-          <div class="cs-block-text">A full-stack web app where users can create crossword puzzles from scratch, fill in words and clues on a custom grid, save puzzles to their account, and play them back interactively. Built as a software engineering course project with a team of six.</div>
-        </div>
-        <div>
-          <div class="cs-block-label">My role</div>
-          <div class="cs-block-text">Worked across the entire stack — contributing to the Next.js frontend, the Quarkus Java backend, the MySQL schema design, REST API integration, JWT-based authentication, and the Docker setup for local development. Not siloed to one layer.</div>
-        </div>
-      </div>
-
-      <div class="cs-challenge">
-        <div class="cs-challenge-label">The hardest part</div>
-        <div class="cs-challenge-text">
-          The trickiest part wasn't the technology — it was the coordination. With six people touching the same codebase, merge conflicts were a constant issue, particularly around shared components and API contracts. We had to establish clearer branch conventions and agree on interface contracts early to stop stepping on each other. It's the kind of problem you don't appreciate until you're in it, and it changed how I think about team architecture decisions before writing any code.
-        </div>
-      </div>
-
-      <div class="cs-stack">
-        <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Java / Quarkus</span>
-        <span class="tag">MySQL</span><span class="tag">JWT Auth</span><span class="tag">REST APIs</span>
-        <span class="tag">Docker</span><span class="tag">Tailwind CSS</span>
-      </div>
-    </div>
-
-    <div class="case-study reveal" id="cs-nominate">
-      <div class="cs-header">
-        <div>
-          <div class="cs-num">Case Study 04</div>
-          <div class="cs-title">NOMinate — Smart Meal Planner</div>
-          <div class="cs-subtitle">Full-stack personal project · React + Flask + OpenAI</div>
-        </div>
-        <a href="https://github.com/DhruvArora02/NOMinate" target="_blank" class="cs-github">↗ View on GitHub</a>
-      </div>
-    
-      <div class="cs-body">
-        <div>
-          <div class="cs-block-label">What it is</div>
-          <div class="cs-block-text">
-            A personalized meal recommendation app that suggests dishes based on cuisine taste, dietary restrictions, budget, cooking skill, and user feedback. Users can choose to cook a recipe or order takeout, and the app adapts by filtering out recent or disliked meals.
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">A full-stack web app where users create crossword puzzles from scratch, fill in words and clues on a custom grid, save puzzles to their account, and play them back interactively. Built as a software engineering course project with a team of six.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">My role</div>
+            <div class="cs-block-text">Worked across the entire stack — contributing to the Next.js frontend, Quarkus Java backend, MySQL schema design, REST API integration, JWT-based authentication, and the Docker setup for local development. Not siloed to one layer.</div>
           </div>
         </div>
-        <div>
-          <div class="cs-block-label">My role</div>
-          <div class="cs-block-text">
-            Built the full-stack application end-to-end with React for the frontend, Flask for the backend, and OpenAI GPT-3.5 to generate recommendations, ingredient lists, and restaurant suggestions.
+        <div class="cs-insight">
+          <div class="cs-insight-label">The hardest part</div>
+          <div class="cs-insight-text">The trickiest part wasn't the technology — it was coordination. With six people touching the same codebase, merge conflicts were constant, especially around shared components and API contracts. We established clearer branch conventions and agreed on interface contracts early to stop stepping on each other. It changed how I think about team architecture decisions before writing any code.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Java / Quarkus</span>
+          <span class="tag">MySQL</span><span class="tag">JWT Auth</span><span class="tag">REST APIs</span><span class="tag">Docker</span>
+        </div>
+      </div>
+
+      <div class="case-study reveal" id="cs-nyctaxi">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 03</div>
+            <div class="cs-title">NYC Taxi Analysis</div>
+            <div class="cs-subtitle">End-to-end data engineering & ML pipeline · Solo project · Databricks</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/NYC_Taxi_Analysis" target="_blank" class="cs-github">↗ GitHub</a>
+        </div>
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">An end-to-end data engineering pipeline built solo on Databricks, processing NYC Yellow Taxi trip data across tens of millions of rows. Ingests raw parquet files, cleans and transforms with PySpark, stores in Delta Lake, runs SQL analytics, and trains a linear regression model to predict taxi fares.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">Why it's interesting</div>
+            <div class="cs-block-text">The goal was to go beyond a notebook exercise and mirror a real production workflow — versioned storage with Delta Lake, reproducible ETL, and a model that trains distributed across the cluster rather than pulling data into memory. At tens of millions of rows, every transformation decision has cost.</div>
           </div>
         </div>
-      </div>
-    
-      <div class="cs-challenge">
-        <div class="cs-challenge-label">Key challenge</div>
-        <div class="cs-challenge-text">
-          Structuring prompts and the feedback loop so recommendations stay personalized and non-repetitive while respecting dietary restrictions and user preferences.
+        <div class="cs-insight">
+          <div class="cs-insight-label">Key technical decision</div>
+          <div class="cs-insight-text">Using Delta Lake over raw parquet was deliberate — it gives ACID transactions and time travel on processed data, which matters when iterating on cleaning logic without re-running full ingestion every time. The MLlib linear regression model predicts fare amount from trip distance, duration, passenger count, and pickup location — the interesting part is that training runs distributed across the cluster rather than on a single machine.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Databricks</span>
+          <span class="tag">Spark SQL</span><span class="tag">MLlib</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
         </div>
       </div>
-    
-      <div class="cs-stack">
-        <span class="tag">React</span><span class="tag">Flask</span><span class="tag">OpenAI</span>
-        <span class="tag">Tailwind CSS</span><span class="tag">Python</span><span class="tag">Axios</span>
-      </div>
+
     </div>
-    
-    <!-- CASE STUDY 2 — NYC TAXI -->
-    <div class="case-study reveal" id="cs-nyctaxi">
-      <div class="cs-header">
-        <div>
-          <div class="cs-num">Case Study 03</div>
-          <div class="cs-title">NYC Taxi Analysis</div>
-          <div class="cs-subtitle">End-to-end data engineering & ML pipeline · Solo project · Databricks</div>
-        </div>
-        <a href="https://github.com/DhruvArora02/NYC_Taxi_Analysis" target="_blank" class="cs-github">↗ View on GitHub</a>
-      </div>
-
-      <div class="cs-body">
-        <div>
-          <div class="cs-block-label">What it is</div>
-          <div class="cs-block-text">An end-to-end data engineering pipeline built solo on Databricks, processing NYC Yellow Taxi trip data. The pipeline ingests raw parquet files, cleans and transforms them with PySpark, stores the result in Delta Lake, runs SQL analytics, and trains a linear regression model to predict taxi fares.</div>
-        </div>
-        <div>
-          <div class="cs-block-label">Why it's interesting</div>
-          <div class="cs-block-text">The goal was to go beyond a notebook exercise and build something that mirrors a real production workflow — versioned storage with Delta Lake, reproducible ETL, and a model that actually runs on Spark rather than pulling data into memory. The full NYC dataset is tens of millions of rows, which forces you to think differently about every transformation.</div>
-        </div>
-      </div>
-
-      <div class="cs-challenge">
-        <div class="cs-challenge-label">Key technical decisions</div>
-        <div class="cs-challenge-text">
-          Using Delta Lake over raw parquet was a deliberate choice — it gives you ACID transactions and time travel on the processed data, which matters when you're iterating on cleaning logic and don't want to re-run the full ingestion every time. The MLlib linear regression model predicts fare amount from trip distance, duration, passenger count, and pickup location — straightforward features, but the interesting part is that the whole model training runs distributed across the cluster rather than on a single machine.
-        </div>
-      </div>
-
-      <div class="cs-viz-placeholder">
-        <div class="cs-viz-label">Visualizations</div>
-        <div class="cs-viz-hint">Screenshots of fare distribution charts and model output coming soon — re-running the notebook to capture outputs.</div>
-      </div>
-
-      <div class="cs-stack">
-        <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Databricks</span>
-        <span class="tag">Spark SQL</span><span class="tag">MLlib</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
-      </div>
-    </div>
-
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-header"><h2>Contact</h2><div class="section-line"></div></div>
+  <section id="contact" style="border-bottom: none;">
     <div class="contact-grid reveal">
-      <div class="contact-text">
-        <p>Graduating May 2026. Open to full-time roles in software engineering, data engineering, and applied AI. Based in Madison, WI — open to relocating.</p>
-      </div>
       <div>
+        <div class="section-label">Contact</div>
+        <div class="contact-headline">Let's build<br>something <em>great</em></div>
+        <p class="contact-sub" style="margin-top: 16px;">
+          Graduating May 2026. Open to full-time roles in software engineering, data engineering, and applied AI. Based in Madison, WI — open to relocating.
+        </p>
+      </div>
+      <div class="contact-links">
         <a href="mailto:dhruvarora0212@gmail.com" class="contact-link">
-          <span class="contact-link-label">Email</span>
-          <span class="contact-link-value">dhruvarora0212@gmail.com</span>
-          <span class="contact-link-arrow">↗</span>
+          <span class="cl-label">Email</span>
+          <span class="cl-value">dhruvarora0212@gmail.com</span>
+          <span class="cl-arrow">↗</span>
         </a>
         <a href="https://www.linkedin.com/in/dhruv-ar/" target="_blank" class="contact-link">
-          <span class="contact-link-label">LinkedIn</span>
-          <span class="contact-link-value">linkedin.com/in/dhruv-ar</span>
-          <span class="contact-link-arrow">↗</span>
+          <span class="cl-label">LinkedIn</span>
+          <span class="cl-value">linkedin.com/in/dhruv-ar</span>
+          <span class="cl-arrow">↗</span>
         </a>
         <a href="https://github.com/DhruvArora02" target="_blank" class="contact-link">
-          <span class="contact-link-label">GitHub</span>
-          <span class="contact-link-value">github.com/DhruvArora02</span>
-          <span class="contact-link-arrow">↗</span>
+          <span class="cl-label">GitHub</span>
+          <span class="cl-value">github.com/DhruvArora02</span>
+          <span class="cl-arrow">↗</span>
         </a>
         <a href="https://dhruvarora02.github.io/Resume-DhruvArora.pdf" target="_blank" class="contact-link">
-          <span class="contact-link-label">Resume</span>
-          <span class="contact-link-value">Download PDF</span>
-          <span class="contact-link-arrow">↓</span>
+          <span class="cl-label">Resume</span>
+          <span class="cl-value">Download PDF</span>
+          <span class="cl-arrow">↓</span>
         </a>
       </div>
     </div>
@@ -839,8 +987,8 @@
 </div>
 
 <footer>
-  <span>Dhruv Arora</span>
-  <span>Madison, WI · UW–Madison · 2026</span>
+  <span>Dhruv Arora · 2026</span>
+  <span>Madison, WI · UW–Madison</span>
 </footer>
 
 <script>
@@ -848,11 +996,11 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.07 });
   reveals.forEach(el => observer.observe(el));
 </script>
 </body>
