@@ -6,6 +6,7 @@
   <title>Dhruv Arora — Software & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css">
   <style>
     :root {
       --bg: #0c0c0c;
@@ -32,9 +33,27 @@
       overflow-x: hidden;
     }
 
+    /* ── TOP ACCENT BAR ── */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      z-index: 300;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    .scroll-progress {
+      position: fixed; top: 2px; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 301;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 2px; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px;
       height: 60px;
@@ -60,6 +79,7 @@
       letter-spacing: 0.01em;
     }
     .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--accent); }
     .nav-cta {
       padding: 7px 18px;
       background: var(--accent);
@@ -69,6 +89,7 @@
       transition: opacity 0.15s !important;
     }
     .nav-cta:hover { opacity: 0.85; color: #0c0c0c !important; }
+    .nav-cta.active { color: #0c0c0c !important; }
 
     /* ── HERO ── */
     #hero {
@@ -79,8 +100,6 @@
       overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
-
-    /* dot grid */
     #hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -89,8 +108,6 @@
       opacity: 0.5;
       pointer-events: none;
     }
-
-    /* glow */
     .hero-glow {
       position: absolute;
       top: -120px; right: -80px;
@@ -98,80 +115,46 @@
       background: radial-gradient(circle, rgba(168,255,120,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
-
     .hero-inner {
-      max-width: 1100px;
-      width: 100%;
+      max-width: 1100px; width: 100%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 80px;
       align-items: center;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
-
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.1s forwards;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
     }
-    .hero-eyebrow::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--accent);
-    }
-
+    .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
     h1 {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
+      font-family: 'Fraunces', serif; font-weight: 600;
       font-size: clamp(48px, 6vw, 80px);
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.2s forwards;
+      line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
     }
-    h1 em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--accent);
-    }
-
+    h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
     .hero-bio {
-      max-width: 480px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-      margin-bottom: 36px;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.35s forwards;
+      max-width: 480px; color: var(--muted);
+      font-size: 15px; line-height: 1.8; margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
     }
     .hero-bio strong { color: var(--text); font-weight: 400; }
-
     .hero-btns {
       display: flex; gap: 12px; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.7s 0.5s forwards;
+      opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
     }
-
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 11px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: all 0.15s;
-      cursor: pointer;
-      letter-spacing: 0.01em;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      text-decoration: none; border-radius: 3px; transition: all 0.15s;
+      cursor: pointer; letter-spacing: 0.01em;
     }
     .btn-primary { background: var(--accent); color: #0c0c0c; }
     .btn-primary:hover { background: #c8ffa0; }
@@ -179,386 +162,201 @@
     .btn-ghost:hover { border-color: var(--muted); }
 
     /* hero photo */
-    .hero-photo {
-      opacity: 0;
-      animation: fadeIn 0.8s 0.6s forwards;
-      flex-shrink: 0;
-    }
+    .hero-photo { opacity: 0; animation: fadeIn 0.8s 0.6s forwards; flex-shrink: 0; }
     .photo-frame {
-      width: 220px; height: 220px;
-      border-radius: 50%;
-      border: 1px solid var(--border2);
-      overflow: hidden;
+      width: 220px; height: 220px; border-radius: 50%;
+      border: 1px solid var(--border2); overflow: hidden;
       background: var(--surface);
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
     .photo-frame::after {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 50%;
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
       box-shadow: inset 0 0 0 1px rgba(168,255,120,0.15);
     }
     .photo-placeholder {
-      font-family: 'Fraunces', serif;
-      font-size: 64px;
-      font-weight: 600;
-      color: var(--border2);
-      user-select: none;
+      font-family: 'Fraunces', serif; font-size: 64px; font-weight: 600;
+      color: var(--border2); user-select: none;
     }
-    .photo-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
     /* currently bar */
     .currently-bar {
-      margin-top: 56px;
-      padding: 16px 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      margin-top: 56px; padding: 16px 20px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
       display: flex; align-items: center; gap: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      opacity: 0;
-      animation: fadeUp 0.7s 0.65s forwards;
-      max-width: 560px;
+      font-size: 13px; color: var(--muted);
+      opacity: 0; animation: fadeUp 0.7s 0.65s forwards; max-width: 560px;
     }
     .currently-dot {
-      width: 7px; height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-      animation: pulse 2s infinite;
+      width: 7px; height: 7px; background: var(--accent);
+      border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite;
     }
     .currently-bar strong { color: var(--text); font-weight: 500; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     /* ── LAYOUT ── */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-
-    /* ── SECTION TEMPLATE ── */
     section { padding: 88px 0; border-bottom: 1px solid var(--border); }
 
     .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
     }
-
     h2 {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
+      font-family: 'Fraunces', serif; font-weight: 600;
       font-size: clamp(28px, 3.5vw, 42px);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 52px;
+      letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 52px;
     }
     h2 em { font-style: italic; font-weight: 300; color: var(--muted); }
 
     /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-text p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
     .about-text strong { color: var(--text); font-weight: 400; }
-
-    .edu-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 28px;
-    }
-    .edu-school {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .edu-degree {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 17px;
-      letter-spacing: -0.01em;
-      margin-bottom: 4px;
-    }
+    .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 28px; }
+    .edu-school { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .edu-degree { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin-bottom: 4px; }
     .edu-meta { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
-    .edu-courses {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--light);
-      line-height: 1.9;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
+    .edu-courses { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--light); line-height: 1.9; padding-top: 16px; border-top: 1px solid var(--border); }
 
     /* ── EXPERIENCE ── */
     .exp-list { display: flex; flex-direction: column; }
-
     .exp-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 40px;
-      padding: 32px 0;
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 40px; padding: 32px 0;
       border-bottom: 1px solid var(--border);
       transition: background 0.15s;
     }
     .exp-item:first-child { border-top: 1px solid var(--border); }
     .exp-item:hover { background: rgba(255,255,255,0.01); }
 
-    .exp-meta { padding-top: 3px; }
-    .exp-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-    .exp-badge {
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.04em;
-      padding: 2px 8px;
-      border-radius: 2px;
+    /* company logo */
+    .exp-logo {
+      width: 32px; height: 32px; border-radius: 6px;
+      overflow: hidden; margin-bottom: 10px;
       background: var(--surface2);
       border: 1px solid var(--border2);
-      color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
-    .exp-badge.green {
-      background: rgba(168,255,120,0.06);
-      border-color: rgba(168,255,120,0.2);
-      color: var(--accent);
-    }
+    .exp-logo img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(30%); }
 
-    .exp-content h3 {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 17px;
-      letter-spacing: -0.01em;
-      margin-bottom: 2px;
-    }
+    .exp-meta { padding-top: 3px; }
+    .exp-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+    .exp-badge { display: inline-block; font-size: 10px; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 2px; background: var(--surface2); border: 1px solid var(--border2); color: var(--muted); }
+    .exp-badge.green { background: rgba(168,255,120,0.06); border-color: rgba(168,255,120,0.2); color: var(--accent); }
+    .exp-content h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin-bottom: 2px; }
     .exp-company { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-    .exp-bullets li {
-      font-size: 13px; color: var(--muted);
-      padding-left: 16px; position: relative; line-height: 1.65;
-    }
+    .exp-bullets li { font-size: 13px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.65; }
     .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--light); }
 
     /* ── PROJECTS ── */
     .projects-list { display: flex; flex-direction: column; gap: 0; }
-
-    /* project index row */
     .project-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-      padding: 22px 0;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: center; padding: 22px 0;
       border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.15s;
+      text-decoration: none; color: inherit; transition: background 0.15s;
     }
     .project-row:first-child { border-top: 1px solid var(--border); }
     .project-row:hover { background: rgba(255,255,255,0.015); }
     .project-row:hover .project-row-title { color: var(--accent); }
     .project-row-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .project-row-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-      transition: color 0.15s;
-    }
+    .project-row-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; transition: color 0.15s; }
     .project-row-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* ── TECH TAGS WITH ICONS ── */
     .tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      padding: 3px 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      padding: 3px 8px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 2px; color: var(--muted);
+      display: inline-flex; align-items: center; gap: 5px;
     }
+    .tag i { font-size: 13px; }
+    .tag .devicon-python-plain { color: #3776ab; }
+    .tag .devicon-pytorch-plain { color: #ee4c2c; }
+    .tag .devicon-kotlin-plain { color: #7f52ff; }
+    .tag .devicon-nextjs-plain { color: #fff; }
+    .tag .devicon-java-plain { color: #f89820; }
+    .tag .devicon-mysql-plain { color: #4479a1; }
+    .tag .devicon-docker-plain { color: #2496ed; }
+    .tag .devicon-typescript-plain { color: #3178c6; }
+    .tag .devicon-react-plain { color: #61dafb; }
+    .tag .devicon-tensorflow-plain { color: #ff6f00; }
+    .tag .devicon-android-plain { color: #3ddc84; }
+
     .project-row-arrow { font-size: 12px; color: var(--light); font-family: 'DM Mono', monospace; white-space: nowrap; }
     .project-row:hover .project-row-arrow { color: var(--accent); }
 
     /* ── CASE STUDIES ── */
     .case-study {
-      margin-top: 2px;
-      padding: 48px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-bottom: 16px;
+      padding: 48px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 6px; margin-bottom: 16px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .case-study:last-child { margin-bottom: 0; }
-
+    .case-study:hover {
+      border-color: var(--border2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
     .cs-top {
       display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 24px;
-      margin-bottom: 36px;
-      padding-bottom: 36px;
+      gap: 24px; margin-bottom: 36px; padding-bottom: 36px;
       border-bottom: 1px solid var(--border);
     }
-
-    .cs-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .cs-title {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 24px;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-    }
-
+    .cs-num { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .cs-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; margin-bottom: 6px; }
     .cs-subtitle { font-size: 13px; color: var(--muted); }
-
     .cs-github {
       display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      border: 1px solid var(--border2);
-      padding: 7px 16px;
-      border-radius: 3px;
-      white-space: nowrap;
-      transition: all 0.15s;
-      flex-shrink: 0;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+      text-decoration: none; border: 1px solid var(--border2);
+      padding: 7px 16px; border-radius: 3px; white-space: nowrap;
+      transition: all 0.15s; flex-shrink: 0;
     }
     .cs-github:hover { border-color: var(--accent); color: var(--accent); }
-
-    .cs-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 28px;
-    }
-
-    .cs-block-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
+    .cs-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+    .cs-block-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
     .cs-block-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
-
     .cs-insight {
-      margin-top: 4px;
-      padding: 20px 24px;
+      margin-top: 4px; padding: 20px 24px;
       background: rgba(168,255,120,0.04);
       border: 1px solid rgba(168,255,120,0.12);
       border-left: 2px solid var(--accent);
       border-radius: 0 4px 4px 0;
     }
-    .cs-insight-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
+    .cs-insight-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
     .cs-insight-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
-
     .cs-stack { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px; }
 
     /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-headline {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: clamp(28px, 3.5vw, 42px);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-headline { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
     .contact-headline em { font-style: italic; font-weight: 300; color: var(--accent); }
-
     .contact-sub { color: var(--muted); font-size: 14px; line-height: 1.75; }
-
     .contact-links { display: flex; flex-direction: column; }
-
     .contact-link {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      transition: color 0.15s;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--text); transition: color 0.15s;
     }
     .contact-link:first-child { border-top: 1px solid var(--border); }
     .contact-link:hover { color: var(--accent); }
     .contact-link:hover .cl-label { color: var(--accent); }
-
-    .cl-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      width: 80px;
-      transition: color 0.15s;
-    }
+    .cl-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; width: 80px; transition: color 0.15s; }
     .cl-value { font-size: 13px; flex: 1; }
     .cl-arrow { font-size: 12px; color: var(--light); }
 
     /* ── FOOTER ── */
-    footer {
-      padding: 28px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 12px; color: var(--light);
-      font-family: 'DM Mono', monospace;
-    }
+    footer { padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--light); font-family: 'DM Mono', monospace; }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
@@ -587,14 +385,18 @@
 </head>
 <body>
 
+<!-- TOP ACCENT BAR -->
+<div class="top-bar"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Dhruv Arora</a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-section="about">About</a>
+    <a href="#experience" data-section="experience">Experience</a>
+    <a href="#projects" data-section="projects">Projects</a>
+    <a href="#contact" data-section="contact">Contact</a>
     <a href="https://dhruvarora02.github.io/Resume-DhruvArora.pdf" target="_blank" class="nav-cta">Resume</a>
   </div>
 </nav>
@@ -637,30 +439,16 @@
     <h2>Who I am,<br><em>what I care about</em></h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>
-          I'm a senior at the University of Wisconsin–Madison pursuing a double major in Computer Science and Data Science,
-          with a Certificate in Economic Analytics — graduating May 2026.
-        </p>
-        <p>
-          What pulls me in is the gap between raw data and something useful. Whether that's designing a distributed ETL pipeline
-          that handles tens of millions of rows without breaking, or figuring out how to run MobileBERT on a phone's NPU
-          without sacrificing embedding quality — I like problems where the architecture decisions actually matter.
-        </p>
-        <p>
-          Outside of work, I compete in Kaggle competitions and hackathons through the DotData and Software Development clubs at UW–Madison,
-          and mentor 600+ students in AI and DBMS.
-        </p>
+        <p>I'm a senior at the University of Wisconsin–Madison pursuing a double major in Computer Science and Data Science, with a Certificate in Economic Analytics — graduating May 2026.</p>
+        <p>What pulls me in is the gap between raw data and something useful. Whether that's designing a distributed ETL pipeline that handles tens of millions of rows without breaking, or figuring out how to run MobileBERT on a phone's NPU without sacrificing embedding quality — I like problems where the architecture decisions actually matter.</p>
+        <p>Outside of work, I compete in Kaggle competitions and hackathons through the DotData and Software Development clubs at UW–Madison, and mentor 600+ students in AI and DBMS.</p>
       </div>
       <div class="reveal">
         <div class="edu-card">
           <div class="edu-school">University of Wisconsin–Madison</div>
           <div class="edu-degree">B.S. Computer Science & Data Science</div>
           <div class="edu-meta">Double Major · 2022 – May 2026 · GPA: 3.5 · Econ Analytics Certificate</div>
-          <div class="edu-courses">
-            Data Structures & Algorithms · Artificial Intelligence · Software Engineering ·
-            Database Management Systems · Data Science Modelling · Econometrics ·
-            Machine Organization · Human-Computer Interaction · Linear Algebra · Discrete Maths
-          </div>
+          <div class="edu-courses">Data Structures & Algorithms · Artificial Intelligence · Software Engineering · Database Management Systems · Data Science Modelling · Econometrics · Machine Organization · Human-Computer Interaction · Linear Algebra · Discrete Maths</div>
         </div>
       </div>
     </div>
@@ -674,6 +462,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/qualcomm.com" alt="Qualcomm" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Jan 2026 – Present</div>
           <span class="exp-badge green">Capstone</span>
         </div>
@@ -690,6 +481,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo" style="background:#c5002d;">
+            <img src="https://logo.clearbit.com/wisc.edu" alt="UW-Madison" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Aug 2025 – Present</div>
           <span class="exp-badge">Research</span>
         </div>
@@ -705,6 +499,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/cencora.com" alt="Cencora" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Jun – Aug 2025</div>
           <span class="exp-badge green">Internship</span>
         </div>
@@ -721,6 +518,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo" style="background:#c5002d;">
+            <img src="https://logo.clearbit.com/wisc.edu" alt="UW-Madison" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Jan 2025 – Present</div>
           <span class="exp-badge">Teaching</span>
         </div>
@@ -735,6 +535,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/wipro.com" alt="Wipro" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Jun – Aug 2024</div>
           <span class="exp-badge green">Internship</span>
         </div>
@@ -750,6 +553,7 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo" style="font-size:10px; color: var(--muted); justify-content: center;">IS</div>
           <div class="exp-date">Jan – May 2024</div>
           <span class="exp-badge">Research</span>
         </div>
@@ -765,6 +569,9 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <div class="exp-logo">
+            <img src="https://logo.clearbit.com/prologic.com" alt="Prologic" onerror="this.style.display='none'">
+          </div>
           <div class="exp-date">Jun – Jul 2023</div>
           <span class="exp-badge green">Internship</span>
         </div>
@@ -786,13 +593,15 @@
     <div class="section-label">Projects</div>
     <h2>Things I've<br><em>built</em></h2>
 
-    <!-- Index -->
     <div class="projects-list reveal">
       <a href="#cs-vibecheck" class="project-row">
         <div class="project-row-left">
           <span class="project-row-title">VibeCheck — Music Recommender App</span>
           <div class="project-row-tags">
-            <span class="tag">TFLite</span><span class="tag">MobileBERT</span><span class="tag">Snapdragon NPU</span><span class="tag">Kotlin</span>
+            <span class="tag"><i class="devicon-tensorflow-plain"></i>TFLite</span>
+            <span class="tag"><i class="devicon-kotlin-plain"></i>Kotlin</span>
+            <span class="tag"><i class="devicon-android-plain"></i>Android</span>
+            <span class="tag">Snapdragon NPU</span>
           </div>
         </div>
         <div class="project-row-arrow">↓ case study</div>
@@ -801,7 +610,21 @@
         <div class="project-row-left">
           <span class="project-row-title">Puzzle Lab</span>
           <div class="project-row-tags">
-            <span class="tag">Next.js</span><span class="tag">Java / Quarkus</span><span class="tag">MySQL</span><span class="tag">Docker</span>
+            <span class="tag"><i class="devicon-nextjs-plain"></i>Next.js</span>
+            <span class="tag"><i class="devicon-java-plain"></i>Quarkus</span>
+            <span class="tag"><i class="devicon-mysql-plain"></i>MySQL</span>
+            <span class="tag"><i class="devicon-docker-plain"></i>Docker</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-nominate" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">NOMinate — Smart Meal Planner</span>
+          <div class="project-row-tags">
+            <span class="tag"><i class="devicon-react-plain"></i>React</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Flask</span>
+            <span class="tag">OpenAI API</span>
           </div>
         </div>
         <div class="project-row-arrow">↓ case study</div>
@@ -810,7 +633,10 @@
         <div class="project-row-left">
           <span class="project-row-title">NYC Taxi Analysis</span>
           <div class="project-row-tags">
-            <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Databricks</span><span class="tag">MLlib</span>
+            <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
+            <span class="tag">Delta Lake</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">MLlib</span>
           </div>
         </div>
         <div class="project-row-arrow">↓ case study</div>
@@ -819,7 +645,9 @@
         <div class="project-row-left">
           <span class="project-row-title">RL Trading Strategy Optimizer</span>
           <div class="project-row-tags">
-            <span class="tag">PyTorch</span><span class="tag">DQN</span><span class="tag">Python</span>
+            <span class="tag"><i class="devicon-pytorch-plain"></i>PyTorch</span>
+            <span class="tag">DQN</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
@@ -828,7 +656,9 @@
         <div class="project-row-left">
           <span class="project-row-title">PCA Image Compression</span>
           <div class="project-row-tags">
-            <span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">PCA</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">PCA</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
@@ -837,7 +667,9 @@
         <div class="project-row-left">
           <span class="project-row-title">City Traffic Optimizer</span>
           <div class="project-row-tags">
-            <span class="tag">Python</span><span class="tag">Ford-Fulkerson</span><span class="tag">Graph Algorithms</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+            <span class="tag">Ford-Fulkerson</span>
+            <span class="tag">Graph Algorithms</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
@@ -846,7 +678,9 @@
         <div class="project-row-left">
           <span class="project-row-title">FashionMNIST Classifier</span>
           <div class="project-row-tags">
-            <span class="tag">PyTorch</span><span class="tag">Neural Networks</span><span class="tag">Python</span>
+            <span class="tag"><i class="devicon-pytorch-plain"></i>PyTorch</span>
+            <span class="tag">Neural Networks</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
           </div>
         </div>
         <div class="project-row-arrow">↗ GitHub</div>
@@ -880,9 +714,13 @@
           <div class="cs-insight-text">Running MobileBERT, EfficientNet-B0, and a sensor MLP concurrently required careful threading — the three encoders run in parallel coroutines, fusing only after all three complete. Getting NNAPI delegation right for Qualcomm's Hexagon NPU required tight model quantization without degrading embedding quality. We also built graceful fallback heuristic encoders for emulator testing, so the full pipeline stays testable without physical hardware.</div>
         </div>
         <div class="cs-stack">
-          <span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">TensorFlow Lite</span>
-          <span class="tag">MobileBERT</span><span class="tag">EfficientNet-B0</span><span class="tag">NNAPI / Hexagon NPU</span>
-          <span class="tag">Spotify API</span><span class="tag">Coroutines</span><span class="tag">Python</span>
+          <span class="tag"><i class="devicon-kotlin-plain"></i>Kotlin</span>
+          <span class="tag"><i class="devicon-android-plain"></i>Android</span>
+          <span class="tag"><i class="devicon-tensorflow-plain"></i>TensorFlow Lite</span>
+          <span class="tag">MobileBERT</span><span class="tag">EfficientNet-B0</span>
+          <span class="tag">NNAPI / Hexagon NPU</span>
+          <span class="tag">Spotify API</span><span class="tag">Coroutines</span>
+          <span class="tag"><i class="devicon-python-plain"></i>Python</span>
         </div>
       </div>
 
@@ -910,15 +748,51 @@
           <div class="cs-insight-text">The trickiest part wasn't the technology — it was coordination. With six people touching the same codebase, merge conflicts were constant, especially around shared components and API contracts. We established clearer branch conventions and agreed on interface contracts early to stop stepping on each other. It changed how I think about team architecture decisions before writing any code.</div>
         </div>
         <div class="cs-stack">
-          <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Java / Quarkus</span>
-          <span class="tag">MySQL</span><span class="tag">JWT Auth</span><span class="tag">REST APIs</span><span class="tag">Docker</span>
+          <span class="tag"><i class="devicon-nextjs-plain"></i>Next.js</span>
+          <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
+          <span class="tag"><i class="devicon-java-plain"></i>Quarkus</span>
+          <span class="tag"><i class="devicon-mysql-plain"></i>MySQL</span>
+          <span class="tag">JWT Auth</span><span class="tag">REST APIs</span>
+          <span class="tag"><i class="devicon-docker-plain"></i>Docker</span>
+        </div>
+      </div>
+
+      <div class="case-study reveal" id="cs-nominate">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 03</div>
+            <div class="cs-title">NOMinate — Smart Meal Planner</div>
+            <div class="cs-subtitle">Full-stack personal project · React + Flask + OpenAI</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/NOMinate" target="_blank" class="cs-github">↗ GitHub</a>
+        </div>
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">A personalized meal recommendation app that suggests dishes based on cuisine taste, dietary restrictions, budget, cooking skill, and real-time user feedback. Users can choose to cook a recipe or order takeout, and the app adapts by filtering out recent or disliked meals.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">My role</div>
+            <div class="cs-block-text">Built the full stack end-to-end — React frontend, Flask backend, and OpenAI GPT-3.5 for generating recommendations, ingredient lists, and restaurant suggestions based on user preferences and feedback history.</div>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <div class="cs-insight-label">Key challenge</div>
+          <div class="cs-insight-text">The interesting engineering problem was prompt design — structuring the OpenAI calls so recommendations stay personalized and non-repetitive across sessions while respecting dietary restrictions. A naive prompt gives you the same 5 meals every time. The solution was injecting recent history and explicit dislike signals into each prompt so the model has enough context to avoid repetition without needing a database of embeddings.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag"><i class="devicon-react-plain"></i>React</span>
+          <span class="tag"><i class="devicon-python-plain"></i>Flask</span>
+          <span class="tag">OpenAI API</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Axios</span>
         </div>
       </div>
 
       <div class="case-study reveal" id="cs-nyctaxi">
         <div class="cs-top">
           <div>
-            <div class="cs-num">Case Study 03</div>
+            <div class="cs-num">Case Study 04</div>
             <div class="cs-title">NYC Taxi Analysis</div>
             <div class="cs-subtitle">End-to-end data engineering & ML pipeline · Solo project · Databricks</div>
           </div>
@@ -939,8 +813,10 @@
           <div class="cs-insight-text">Using Delta Lake over raw parquet was deliberate — it gives ACID transactions and time travel on processed data, which matters when iterating on cleaning logic without re-running full ingestion every time. The MLlib linear regression model predicts fare amount from trip distance, duration, passenger count, and pickup location — the interesting part is that training runs distributed across the cluster rather than on a single machine.</div>
         </div>
         <div class="cs-stack">
-          <span class="tag">PySpark</span><span class="tag">Delta Lake</span><span class="tag">Databricks</span>
-          <span class="tag">Spark SQL</span><span class="tag">MLlib</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+          <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
+          <span class="tag">Delta Lake</span><span class="tag">Databricks</span>
+          <span class="tag">Spark SQL</span><span class="tag">MLlib</span>
+          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
         </div>
       </div>
 
@@ -990,16 +866,42 @@
 </footer>
 
 <script>
+  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i * 70);
-        observer.unobserve(e.target);
+        revealObserver.unobserve(e.target);
       }
     });
   }, { threshold: 0.07 });
-  reveals.forEach(el => observer.observe(el));
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // Scroll progress bar
+  const progress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progress.style.width = pct + '%';
+  });
+
+  // Active nav highlight
+  const sections = ['about', 'experience', 'projects', 'contact'];
+  const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+  const activateNav = () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  };
+  window.addEventListener('scroll', activateNav);
+  activateNav();
 </script>
 </body>
 </html>
