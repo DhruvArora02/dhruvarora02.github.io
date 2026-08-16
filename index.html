@@ -615,7 +615,7 @@
       </a>
       <a href="#cs-nyctaxi" class="project-row">
         <div class="project-row-left">
-          <span class="project-row-title">NYC Taxi Analysis</span>
+          <span class="project-row-title">NYC Taxi Pipeline</span>
           <div class="project-row-tags">
             <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
             <span class="tag">Delta Lake</span>
@@ -652,7 +652,13 @@
     <div class="other-projects reveal">
       <div class="other-projects-label">Other projects</div>
       <div class="other-projects-list">
+        <a href="https://github.com/DhruvArora02/LLM-Web-Task-Eval" target="_blank" class="other-project-link">LLM Web Task Eval ↗</a>
+        <a href="https://github.com/DhruvArora02/Customer-Churn-Prediction" target="_blank" class="other-project-link">Customer Churn Prediction ↗</a>
+        <a href="https://github.com/DhruvArora02/ML-Schedule-Optimizer" target="_blank" class="other-project-link">ML Schedule Optimizer ↗</a>
+        <a href="https://github.com/DhruvArora02/Spotify-Popularity-Analysis" target="_blank" class="other-project-link">Spotify Popularity Analysis ↗</a>
         <a href="https://github.com/DhruvArora02/RL-Powered-Trading-Strategy-Optimizer" target="_blank" class="other-project-link">RL Trading Strategy Optimizer ↗</a>
+        <a href="https://github.com/DhruvArora02/Teeko-AI-Player" target="_blank" class="other-project-link">Teeko AI Player ↗</a>
+        <a href="https://github.com/DhruvArora02/8Puzzle-Solver-AStar" target="_blank" class="other-project-link">8-Puzzle A* Solver ↗</a>
         <a href="https://github.com/DhruvArora02/PCA-Image-Compression" target="_blank" class="other-project-link">PCA Image Compression ↗</a>
         <a href="https://github.com/DhruvArora02/City-Traffic-Optimizer" target="_blank" class="other-project-link">City Traffic Optimizer ↗</a>
         <a href="https://github.com/DhruvArora02/FashionMNIST-Classifier-PyTorch" target="_blank" class="other-project-link">FashionMNIST Classifier ↗</a>
@@ -705,16 +711,16 @@
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">ShrinkDB is a storage engine I built from scratch in C++17 that solves the same core problem real backup and storage systems face. Most new data is not actually new. If you back up the same set of files every day, 95% of each backup is identical to the last one, so instead of writing a full copy every time, ShrinkDB breaks values into content-defined chunks using a rolling hash, stores each unique chunk exactly once with reference counting, and reclaims space automatically once nothing points to a chunk anymore. It is not a toy demo of one data structure. It is a small but complete systems stack, durability through a write-ahead log, concurrency through a background garbage-collection thread, and live replication over raw TCP sockets between a primary and a replica node, all working together at the same time.</div>
+            <div class="cs-block-text">A C++17 storage engine that deduplicates data into content-defined chunks using a rolling hash, with a write-ahead log, concurrent garbage collection, and live TCP replication.</div>
           </div>
           <div>
             <div class="cs-block-label">The pipeline</div>
-            <div class="cs-block-text">I designed and built every layer myself, the chunker, the content-addressed chunk store, the write-ahead log, the engine that ties them together, and the replication protocol. The flow is straightforward to describe but not simple to get right. A put call runs the value through the rolling-hash chunker, checks each resulting chunk against a hash table to see if it is already stored, appends the operation to the write-ahead log before touching any in-memory state so a crash mid-write cannot corrupt anything, and then updates the key's index.</div>
+            <div class="cs-block-text">I built every layer myself, the chunker, the chunk store, the write-ahead log, and the replication protocol, so a crash mid-write cannot corrupt anything.</div>
           </div>
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Key technical decision</div>
-          <div class="cs-insight-text">The single decision that shaped everything downstream was choosing content-defined chunking over fixed-size chunking. Fixed-size chunks are simpler to implement, but a single byte inserted at the start of a file shifts every chunk boundary after it, destroying dedup opportunities. Rolling-hash chunking lets boundaries move with the content instead of a fixed offset, so a local edit only disturbs nearby chunks, the same idea used in tools like restic and rsync, and the reason the benchmark numbers, a 6.1x dedup ratio and 83.7% space saved, hold up even under simulated edits and not just identical repeated data. The hardest part was making concurrency and correctness meet in the middle. The background reclaimer thread sweeps and deletes chunks while foreground reads and writes are happening at the same time, and getting the locking right so a chunk never gets reclaimed while a read is still in progress took several rounds of multithreaded testing before I trusted it. An early correctness test also used synthetic data that was too periodic, which fought the rolling hash's boundary distribution and produced a false failure that looked like a real bug for a while, a reminder that test data quality matters as much as the code under test. The next steps are replaying write-ahead log history to a replica on connect, since replicas currently only see live writes going forward, and moving the in-memory key index to an on-disk structure like an LSM-tree so recovery time does not grow linearly with log size.</div>
+          <div class="cs-insight-text">Choosing content-defined chunking over fixed-size chunking is why a 6.1x dedup ratio holds up even under edits, and getting the reclaim locking right against live reads took several rounds of multithreaded testing.</div>
         </div>
         <div class="cs-stack">
           <span class="tag">C++17</span>
@@ -736,16 +742,16 @@
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">DialMCP is an MCP (Model Context Protocol) server that gives an AI agent the ability to take real-world telephony actions, sending texts, placing voice calls, and checking whether they actually reached the recipient, rather than just generating text that describes doing so. Built on Twilio for the telephony layer and the Anthropic API for the agent, it exposes three tools, send_sms, make_call, and check_delivery_status, that Claude can invoke autonomously from a plain language instruction like "text this customer their order shipped," turning a sentence into a real message on a real phone within seconds.</div>
+            <div class="cs-block-text">An MCP server that lets an AI agent send texts, place calls, and confirm delivery through Twilio and the Anthropic API.</div>
           </div>
           <div>
             <div class="cs-block-label">Why this is unique</div>
-            <div class="cs-block-text">Most MCP server demos wrap read-only APIs, search, lookup, fetch, where a mistake just means a wrong answer in a chat window. DialMCP is unusual in that it wraps an action with a real, irreversible, real-world consequence, a stranger's phone actually rings or buzzes. That shift forces a different level of care than a typical "give the LLM a tool" project. Validation, error handling, and the agent's understanding of what success even means all have to be treated more seriously once the output leaves the sandbox of a conversation and becomes something a real person experiences.</div>
+            <div class="cs-block-text">Unlike most MCP demos, it wraps a real, irreversible action instead of a read-only lookup, so a mistake reaches an actual phone.</div>
           </div>
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Hardest part</div>
-          <div class="cs-insight-text">The most unexpectedly deep part of the build was error classification, turning Twilio's raw numeric error codes (21608, 21610, 20429, 21614, and more) into messages an agent could actually reason about or explain to a user. A naive implementation would just let a raw exception bubble up as "something went wrong." Instead, each code needed to be mapped to its actual cause, an unverified trial account number, an opted-out recipient, a rate limit, a non-mobile number, so the agent's response to a failure is specific and actionable rather than an opaque error dump. Closely tied to this was the realization that "sent successfully" and "actually delivered" are two different states entirely. Twilio can accept and queue a message while the carrier silently drops it downstream, which is why check_delivery_status exists as a distinct step rather than an afterthought.</div>
+          <div class="cs-insight-text">The hardest part was classifying Twilio's raw error codes into causes an agent can reason about, since "sent successfully" and "actually delivered" turned out to be different states entirely.</div>
         </div>
         <div class="cs-stack">
           <span class="tag">MCP</span>
@@ -765,16 +771,16 @@
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">Job Lead Radar is an agent I built for my own job search. It polls company career-page APIs, Greenhouse and Lever, for new postings, filters them against configurable title rules, scores each one for relevance against my resume using Claude, and writes a ranked daily digest. Instead of manually re-checking a dozen company career pages and LinkedIn every day, I run one command each morning and get a sorted shortlist, company, title, location, relevance score, one-sentence reasoning, and a model-assessed seniority tag, with everything already deduplicated against postings I have already seen. Right now it is purely an internal tool I use myself, not a product, no UI, just a CLI and a markdown digest I read each morning.</div>
+            <div class="cs-block-text">Job Lead Radar is an agent I built for my own job search. It polls company career-page APIs, Greenhouse and Lever, for new postings, filters them against configurable title rules, scores each one for relevance against my resume using Claude, and writes a ranked daily digest. Instead of manually checking a dozen career pages every day, I run one command each morning and get a sorted shortlist already deduplicated against postings I have seen. Right now it is an internal tool, no UI, just a CLI and a markdown digest.</div>
           </div>
           <div>
             <div class="cs-block-label">Why this is unique</div>
-            <div class="cs-block-text">Most job-tracking tools are either simple keyword-matching scrapers or thin wrappers around LinkedIn scraping, which risks account bans since LinkedIn's terms explicitly prohibit that kind of automation. Job Lead Radar deliberately stays inside official, public APIs, Greenhouse and Lever expose structured job data legitimately, and instead of stopping at keyword filtering, it uses an LLM to actually read each posting's full description and judge fit and seniority level, catching cases a title alone would miss, for example a posting that says "Software Engineer, Kubernetes" but reads as a senior role once you read the requirements. It is also intentionally not an auto-apply or auto-outreach bot. Every decision to reach out stays human in the loop, which keeps it both compliant and honest as a tool rather than spam.</div>
+            <div class="cs-block-text">Most job-tracking tools are keyword scrapers or thin wrappers around LinkedIn scraping, which risks account bans. Job Lead Radar stays inside official public APIs and uses an LLM to actually read each posting and judge fit and seniority, catching cases a title alone would miss. It is also intentionally not an auto-apply bot, every outreach decision stays human in the loop, which keeps it honest as a tool rather than spam.</div>
           </div>
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Hardest part</div>
-          <div class="cs-insight-text">The trickiest part was not the scoring. It was getting the filtering logic actually correct before trusting it to discard data permanently. A naive substring exclude list, using "iv" to catch "Engineer IV," silently matched unrelated words like "Delivery" and "Hawaii," which would have quietly deleted good postings with zero visibility into what was lost. Fixing this meant switching to whole-word matching with regression tests for exactly those collision cases, plus building a dry-run mode that shows the full list of what would be deleted, annotated with which filter term caught it, before anything actually gets removed from the database. That verify-before-delete discipline mattered more here than in a typical project, since the cost of a silent false positive is a good job lead you never even know you missed.</div>
+          <div class="cs-insight-text">The trickiest part was not the scoring, it was getting the filtering logic correct before trusting it to discard data permanently. A naive substring exclude list, using "iv" to catch "Engineer IV," silently matched unrelated words like "Delivery" and "Hawaii." Fixing this meant switching to whole-word matching with regression tests for those exact collisions, plus a dry-run mode that shows what would be deleted and why before anything actually gets removed. That verify-before-delete discipline mattered, since the cost of a silent false positive is a good lead you never know you missed.</div>
         </div>
         <div class="cs-stack">
           <span class="tag"><i class="devicon-python-plain"></i>Python</span>
@@ -788,7 +794,7 @@
         <div class="cs-top">
           <div>
             <div class="cs-num">Case Study 05 · In Progress</div>
-            <div class="cs-title">NYC Taxi Analysis</div>
+            <div class="cs-title">NYC Taxi Pipeline</div>
             <div class="cs-subtitle">Batch data pipeline on NYC TLC trip data · Solo project · Migrating to Snowflake</div>
           </div>
           <a href="https://github.com/DhruvArora02/NYC_Taxi_Analysis" target="_blank" class="cs-github">↗ GitHub</a>
@@ -796,16 +802,16 @@
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">It is a batch data pipeline and analytics project built on the official NYC TLC yellow taxi dataset, currently covering the January 2024 trip file, 2,964,624 raw trips. PySpark cleans and reshapes the data, the result is stored in Delta Lake, and three things run on top of that, a Spark SQL aggregation of top pickup zones by average fare, a seaborn bar chart, and an MLlib linear regression that predicts fare from passenger count, trip distance, and trip duration. The cleaning stage maps TLC's raw column names into a friendlier schema, joins the integer zone IDs against the official Taxi Zone Lookup so locations read as JFK Airport rather than a raw code, drops rows with nulls in critical fields, filters out non-positive fares and distances and inverted timestamps, and derives a trip duration column. 2,754,407 rows, 92.9%, survive the filters.</div>
+            <div class="cs-block-text">A PySpark and Delta Lake pipeline that cleans NYC TLC taxi trip data and trains an MLlib model to predict fares.</div>
           </div>
           <div>
             <div class="cs-block-label">Migrating to Snowflake</div>
-            <div class="cs-block-text">The project's current direction is moving the SQL and warehousing layer from Delta Lake to Snowflake, while deliberately keeping the PySpark cleaning steps unchanged. The notebook runs end to end locally against all 2.96 million rows, executed through nbconvert with every cell's output confirmed. Getting there meant building out the local runtime itself, Java 17, PySpark pinned to 4.1.1 to match delta-spark 4.3.1's ceiling, Delta jars copied in to sidestep dependency resolution, Hadoop's native libraries set up for local writes on Windows, and a hand-applied patch for an unreleased upstream Spark fix, without which every Python worker crashes on Windows with Python 3.12 and newer. That patch lives inside the PySpark install itself, so a plain pip reinstall silently reverts it, which is documented in the README as a known trap.</div>
+            <div class="cs-block-text">It is now migrating the warehousing layer to Snowflake while keeping the PySpark cleaning steps unchanged, verified end to end against all 2.96 million rows.</div>
           </div>
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Where it stands</div>
-          <div class="cs-insight-text">An export script reproduces the cleaning pipeline and writes twelve flat, time-ordered parquet files, 53.4 MB, verified at exactly 2,754,407 rows, and a load script contains the table definition, stage and file-format setup, and the copy and validation steps. None of that has been run against a live Snowflake account yet, so the table definition, the file path, and the column-mapping behavior are untested assumptions rather than verified behavior. Once that load succeeds, the notebook's SQL cells still need to be repointed from the Delta temp view to Snowflake, which is the actual migration. A few other things are potential improvements rather than active work right now. The MLlib model has no evaluation at all, no RMSE, no R squared, and the sample predictions are suspicious, it predicts roughly $14.50 for every trip including near-zero-distance ones, meaning the intercept is dominating and the model is not really learning yet. The pipeline also only handles a single month with a hardcoded filename, so multi-month and incremental loading remain open, and a handful of data quality edges, fares as low as $0.01 and a few timestamps well outside January 2024, are real artifacts in the TLC file that currently pass through untouched.</div>
+          <div class="cs-insight-text">The Snowflake load script is written but untested against a live account, and the MLlib model still needs real evaluation rather than the flat predictions it gives today.</div>
         </div>
         <div class="cs-stack">
           <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
