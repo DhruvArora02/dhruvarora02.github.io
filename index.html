@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dhruv Arora — Software & AI Engineer</title>
+  <title>Dhruv Arora, Software & AI Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.15.1/devicon.min.css">
@@ -20,10 +20,8 @@
       --muted: #7a7a72;
       --light: #3a3a36;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -32,7 +30,6 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
-
     /* ── TOP ACCENT BAR ── */
     .top-bar {
       position: fixed; top: 0; left: 0; right: 0;
@@ -40,7 +37,6 @@
       background: var(--accent);
       z-index: 300;
     }
-
     /* ── SCROLL PROGRESS ── */
     .scroll-progress {
       position: fixed; top: 2px; left: 0;
@@ -50,7 +46,6 @@
       width: 0%;
       transition: width 0.1s linear;
     }
-
     /* ── NAV ── */
     nav {
       position: fixed; top: 2px; left: 0; right: 0; z-index: 200;
@@ -90,7 +85,6 @@
     }
     .nav-cta:hover { opacity: 0.85; color: #0c0c0c !important; }
     .nav-cta.active { color: #0c0c0c !important; }
-
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -160,7 +154,6 @@
     .btn-primary:hover { background: #c8ffa0; }
     .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border2); }
     .btn-ghost:hover { border-color: var(--muted); }
-
     /* hero photo */
     .hero-photo { opacity: 0; animation: fadeIn 0.8s 0.6s forwards; flex-shrink: 0; }
     .photo-frame {
@@ -179,7 +172,6 @@
       color: var(--border2); user-select: none;
     }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
     /* currently bar */
     .currently-bar {
       margin-top: 56px; padding: 16px 20px;
@@ -194,11 +186,9 @@
     }
     .currently-bar strong { color: var(--text); font-weight: 500; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
     /* ── LAYOUT ── */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
     section { padding: 88px 0; border-bottom: 1px solid var(--border); }
-
     .section-label {
       font-family: 'DM Mono', monospace; font-size: 10px;
       letter-spacing: 0.14em; text-transform: uppercase;
@@ -210,7 +200,6 @@
       letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 52px;
     }
     h2 em { font-style: italic; font-weight: 300; color: var(--muted); }
-
     /* ── ABOUT ── */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .about-text p { color: var(--muted); font-size: 14px; line-height: 1.85; margin-bottom: 16px; }
@@ -220,7 +209,6 @@
     .edu-degree { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; margin-bottom: 4px; }
     .edu-meta { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
     .edu-courses { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--light); line-height: 1.9; padding-top: 16px; border-top: 1px solid var(--border); }
-
     /* ── EXPERIENCE ── */
     .exp-list { display: flex; flex-direction: column; }
     .exp-item {
@@ -231,7 +219,6 @@
     }
     .exp-item:first-child { border-top: 1px solid var(--border); }
     .exp-item:hover { background: rgba(255,255,255,0.01); }
-
     /* company logo */
     .exp-logo {
       width: 32px; height: 32px; border-radius: 6px;
@@ -242,7 +229,6 @@
       flex-shrink: 0;
     }
     .exp-logo img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(30%); }
-
     .exp-meta { padding-top: 3px; }
     .exp-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
     .exp-badge { display: inline-block; font-size: 10px; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 2px; background: var(--surface2); border: 1px solid var(--border2); color: var(--muted); }
@@ -252,7 +238,6 @@
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .exp-bullets li { font-size: 13px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.65; }
     .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--light); }
-
     /* ── PROJECTS ── */
     .projects-list { display: flex; flex-direction: column; gap: 0; }
     .project-row {
@@ -267,7 +252,6 @@
     .project-row-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .project-row-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; transition: color 0.15s; }
     .project-row-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-
     /* ── TECH TAGS WITH ICONS ── */
     .tag {
       font-family: 'DM Mono', monospace; font-size: 10px;
@@ -287,10 +271,19 @@
     .tag .devicon-react-plain { color: #61dafb; }
     .tag .devicon-tensorflow-plain { color: #ff6f00; }
     .tag .devicon-android-plain { color: #3ddc84; }
-
     .project-row-arrow { font-size: 12px; color: var(--light); font-family: 'DM Mono', monospace; white-space: nowrap; }
     .project-row:hover .project-row-arrow { color: var(--accent); }
-
+    /* ── OTHER PROJECTS ── */
+    .other-projects { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .other-projects-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .other-projects-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .other-project-link {
+      font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted);
+      text-decoration: none; padding: 6px 12px;
+      border: 1px solid var(--border); border-radius: 3px;
+      transition: all 0.15s;
+    }
+    .other-project-link:hover { color: var(--accent); border-color: var(--accent); }
     /* ── CASE STUDIES ── */
     .case-study {
       padding: 48px; background: var(--surface);
@@ -332,7 +325,6 @@
     .cs-insight-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
     .cs-insight-text { font-size: 13px; color: var(--muted); line-height: 1.8; }
     .cs-stack { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 6px; }
-
     /* ── CONTACT ── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .contact-headline { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
@@ -350,21 +342,17 @@
     .cl-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; width: 80px; transition: color 0.15s; }
     .cl-value { font-size: 13px; flex: 1; }
     .cl-arrow { font-size: 12px; color: var(--light); }
-
     /* ── FOOTER ── */
     footer { padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--light); font-family: 'DM Mono', monospace; }
-
     /* ── ANIMATIONS ── */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
-
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
@@ -384,11 +372,9 @@
   </style>
 </head>
 <body>
-
 <!-- TOP ACCENT BAR -->
 <div class="top-bar"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
-
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">Dhruv Arora</a>
@@ -400,18 +386,17 @@
     <a href="https://dhruvarora02.github.io/Resume-DhruvArora.pdf" target="_blank" class="nav-cta">Resume</a>
   </div>
 </nav>
-
 <!-- HERO -->
 <div id="hero">
   <div class="hero-glow"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Available · May 2026</div>
+      <div class="hero-eyebrow">Available Now</div>
       <h1>Software &<br><em>AI Engineer</em></h1>
       <p class="hero-bio">
-        I'm Dhruv — a senior at <strong>UW–Madison</strong> double majoring in CS & Data Science.
+        I am Dhruv, a graduate of <strong>UW–Madison</strong> where I double majored in CS & Data Science.
         I build scalable ML pipelines, full-stack systems, and data engineering workflows.
-        Most recently: on-device AI for Qualcomm on Snapdragon NPUs.
+        Most recently, on-device AI for Qualcomm on Snapdragon NPUs.
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">See my work</a>
@@ -420,7 +405,7 @@
       </div>
       <div class="currently-bar">
         <div class="currently-dot"></div>
-        <span><strong>Currently:</strong> Building VibeCheck — an on-device music recommender for Qualcomm Snapdragon, and mentoring 600+ students in AI & DBMS at UW–Madison.</span>
+        <span><strong>Currently</strong> building VibeCheck, an on-device music recommender for Qualcomm Snapdragon, and mentoring 600+ students in AI & DBMS at UW–Madison.</span>
       </div>
     </div>
     <div class="hero-photo">
@@ -430,36 +415,32 @@
     </div>
   </div>
 </div>
-
 <div class="page">
-
   <!-- ABOUT -->
   <section id="about">
     <div class="section-label">About</div>
     <h2>Who I am,<br><em>what I care about</em></h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a senior at the University of Wisconsin–Madison pursuing a double major in Computer Science and Data Science, with a Certificate in Economic Analytics — graduating May 2026.</p>
-        <p>What pulls me in is the gap between raw data and something useful. Whether that's designing a distributed ETL pipeline that handles tens of millions of rows without breaking, or figuring out how to run MobileBERT on a phone's NPU without sacrificing embedding quality — I like problems where the architecture decisions actually matter.</p>
+        <p>I am a graduate of the University of Wisconsin–Madison, where I completed a double major in Computer Science and Data Science along with a Certificate in Economic Analytics.</p>
+        <p>What pulls me in is the gap between raw data and something useful. Whether that is designing a distributed ETL pipeline that handles tens of millions of rows without breaking, or figuring out how to run MobileBERT on a phone's NPU without sacrificing embedding quality, I like problems where the architecture decisions actually matter.</p>
         <p>Outside of work, I compete in Kaggle competitions and hackathons through the DotData and Software Development clubs at UW–Madison, and mentor 600+ students in AI and DBMS.</p>
       </div>
       <div class="reveal">
         <div class="edu-card">
           <div class="edu-school">University of Wisconsin–Madison</div>
           <div class="edu-degree">B.S. Computer Science & Data Science</div>
-          <div class="edu-meta">Double Major · 2022 – May 2026 · GPA: 3.5 · Econ Analytics Certificate</div>
+          <div class="edu-meta">Double Major · 2022 – May 2026 · GPA 3.5 · Econ Analytics Certificate</div>
           <div class="edu-courses">Data Structures & Algorithms · Artificial Intelligence · Software Engineering · Database Management Systems · Data Science Modelling · Econometrics · Machine Organization · Human-Computer Interaction · Linear Algebra · Discrete Maths</div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-label">Experience</div>
     <h2>Where I've<br><em>worked</em></h2>
     <div class="exp-list">
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo">
@@ -469,7 +450,7 @@
           <span class="exp-badge green">Capstone</span>
         </div>
         <div class="exp-content">
-          <h3>Machine Learning Intern</h3>
+          <h3>ML Engineering</h3>
           <div class="exp-company">Qualcomm · Industry-Sponsored Capstone · Madison, WI</div>
           <ul class="exp-bullets">
             <li>Designing a multimodal real-time recommendation pipeline mapping image, text, voice & context to personalized Spotify playlists.</li>
@@ -478,7 +459,6 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo" style="background:#c5002d;">
@@ -488,7 +468,7 @@
           <span class="exp-badge">Research</span>
         </div>
         <div class="exp-content">
-          <h3>Undergraduate Research Assistant — LLM Training</h3>
+          <h3>Undergraduate Research Assistant, LLM Training</h3>
           <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
           <ul class="exp-bullets">
             <li>Verified and analyzed AI-generated web navigation tasks, tracking step sequences, parallelization patterns, and URL trajectories.</li>
@@ -496,7 +476,6 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo">
@@ -515,7 +494,6 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo" style="background:#c5002d;">
@@ -525,14 +503,13 @@
           <span class="exp-badge">Teaching</span>
         </div>
         <div class="exp-content">
-          <h3>Peer Mentor — AI and DBMS</h3>
+          <h3>Peer Mentor, AI and DBMS</h3>
           <div class="exp-company">UW–Madison CDIS · Madison, WI</div>
           <ul class="exp-bullets">
             <li>Mentored 600+ students in AI & DBMS courses covering search algorithms, ML basics, SQL, schema design, and query optimization.</li>
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo">
@@ -550,7 +527,6 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo">
@@ -568,7 +544,6 @@
           </ul>
         </div>
       </div>
-
       <div class="exp-item reveal">
         <div class="exp-meta">
           <div class="exp-logo">
@@ -586,15 +561,12 @@
           </ul>
         </div>
       </div>
-
     </div>
   </section>
-
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label">Projects</div>
     <h2>Things I've<br><em>built</em></h2>
-
     <div class="projects-list reveal">
       <a href="#cs-vibecheck" class="project-row">
         <div class="project-row-left">
@@ -604,6 +576,62 @@
             <span class="tag"><i class="devicon-kotlin-plain"></i>Kotlin</span>
             <span class="tag"><i class="devicon-android-plain"></i>Android</span>
             <span class="tag">Snapdragon NPU</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-shrinkdb" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">ShrinkDB</span>
+          <div class="project-row-tags">
+            <span class="tag">C++17</span>
+            <span class="tag">Write-Ahead Log</span>
+            <span class="tag">TCP Replication</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-dialmcp" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">DialMCP</span>
+          <div class="project-row-tags">
+            <span class="tag">MCP</span>
+            <span class="tag">Twilio</span>
+            <span class="tag">Anthropic API</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-jobleadradar" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">Job Lead Radar</span>
+          <div class="project-row-tags">
+            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Greenhouse / Lever APIs</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-nyctaxi" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">NYC Taxi Analysis</span>
+          <div class="project-row-tags">
+            <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
+            <span class="tag">Delta Lake</span>
+            <span class="tag">Snowflake</span>
+            <span class="tag">MLlib</span>
+          </div>
+        </div>
+        <div class="project-row-arrow">↓ case study</div>
+      </a>
+      <a href="#cs-nominate" class="project-row">
+        <div class="project-row-left">
+          <span class="project-row-title">NOMinate — Smart Meal Planner</span>
+          <div class="project-row-tags">
+            <span class="tag"><i class="devicon-react-plain"></i>React</span>
+            <span class="tag"><i class="devicon-python-plain"></i>Flask</span>
+            <span class="tag">OpenAI API</span>
           </div>
         </div>
         <div class="project-row-arrow">↓ case study</div>
@@ -620,91 +648,31 @@
         </div>
         <div class="project-row-arrow">↓ case study</div>
       </a>
-      <a href="#cs-nominate" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">NOMinate — Smart Meal Planner</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-react-plain"></i>React</span>
-            <span class="tag"><i class="devicon-python-plain"></i>Flask</span>
-            <span class="tag">OpenAI API</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↓ case study</div>
-      </a>
-      <a href="#cs-nyctaxi" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">NYC Taxi Analysis</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
-            <span class="tag">Delta Lake</span>
-            <span class="tag">Databricks</span>
-            <span class="tag">MLlib</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↓ case study</div>
-      </a>
-      <a href="https://github.com/DhruvArora02/RL-Powered-Trading-Strategy-Optimizer" target="_blank" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">RL Trading Strategy Optimizer</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-pytorch-plain"></i>PyTorch</span>
-            <span class="tag">DQN</span>
-            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↗ GitHub</div>
-      </a>
-      <a href="https://github.com/DhruvArora02/PCA-Image-Compression" target="_blank" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">PCA Image Compression</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
-            <span class="tag">NumPy</span>
-            <span class="tag">PCA</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↗ GitHub</div>
-      </a>
-      <a href="https://github.com/DhruvArora02/City-Traffic-Optimizer" target="_blank" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">City Traffic Optimizer</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
-            <span class="tag">Ford-Fulkerson</span>
-            <span class="tag">Graph Algorithms</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↗ GitHub</div>
-      </a>
-      <a href="https://github.com/DhruvArora02/FashionMNIST-Classifier-PyTorch" target="_blank" class="project-row">
-        <div class="project-row-left">
-          <span class="project-row-title">FashionMNIST Classifier</span>
-          <div class="project-row-tags">
-            <span class="tag"><i class="devicon-pytorch-plain"></i>PyTorch</span>
-            <span class="tag">Neural Networks</span>
-            <span class="tag"><i class="devicon-python-plain"></i>Python</span>
-          </div>
-        </div>
-        <div class="project-row-arrow">↗ GitHub</div>
-      </a>
     </div>
-
+    <div class="other-projects reveal">
+      <div class="other-projects-label">Other projects</div>
+      <div class="other-projects-list">
+        <a href="https://github.com/DhruvArora02/RL-Powered-Trading-Strategy-Optimizer" target="_blank" class="other-project-link">RL Trading Strategy Optimizer ↗</a>
+        <a href="https://github.com/DhruvArora02/PCA-Image-Compression" target="_blank" class="other-project-link">PCA Image Compression ↗</a>
+        <a href="https://github.com/DhruvArora02/City-Traffic-Optimizer" target="_blank" class="other-project-link">City Traffic Optimizer ↗</a>
+        <a href="https://github.com/DhruvArora02/FashionMNIST-Classifier-PyTorch" target="_blank" class="other-project-link">FashionMNIST Classifier ↗</a>
+      </div>
+    </div>
     <!-- Case Studies -->
     <div style="margin-top: 48px; display: flex; flex-direction: column; gap: 16px;">
-
       <div class="case-study reveal" id="cs-vibecheck">
         <div class="cs-top">
           <div>
-            <div class="cs-num">Case Study 01 · In Progress</div>
+            <div class="cs-num">Case Study 01</div>
             <div class="cs-title">VibeCheck — Music Recommender App</div>
-            <div class="cs-subtitle">Qualcomm Industry-Sponsored Capstone · Machine Learning Intern · Jan 2026 – Present</div>
+            <div class="cs-subtitle">Qualcomm Industry-Sponsored Capstone · ML Engineering · Jan 2026 – Present</div>
           </div>
           <a href="https://github.com/chiarakenagy3/snapbadgers" target="_blank" class="cs-github">↗ GitHub</a>
         </div>
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">An Android app that recommends songs by fusing three live input signals — a text query, an optional camera frame, and real device sensor readings (accelerometer, light, GPS, clock) — through a 6-stage on-device ML pipeline. All inference runs locally using TensorFlow Lite with NNAPI delegation for NPU acceleration on Qualcomm Snapdragon. No server required.</div>
+            <div class="cs-block-text">An Android app that recommends songs by fusing three live input signals, a text query, an optional camera frame, and real device sensor readings (accelerometer, light, GPS, clock), through a 6-stage on-device ML pipeline. All inference runs locally using TensorFlow Lite with NNAPI delegation for NPU acceleration on Qualcomm Snapdragon. No server required.</div>
           </div>
           <div>
             <div class="cs-block-label">The pipeline</div>
@@ -713,7 +681,7 @@
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Key engineering decision</div>
-          <div class="cs-insight-text">Running MobileBERT, EfficientNet-B0, and a sensor MLP concurrently required careful threading — the three encoders run in parallel coroutines, fusing only after all three complete. Getting NNAPI delegation right for Qualcomm's Hexagon NPU required tight model quantization without degrading embedding quality. We also built graceful fallback heuristic encoders for emulator testing, so the full pipeline stays testable without physical hardware.</div>
+          <div class="cs-insight-text">Running MobileBERT, EfficientNet-B0, and a sensor MLP concurrently required careful threading. The three encoders run in parallel coroutines, fusing only after all three complete. Getting NNAPI delegation right for Qualcomm's Hexagon NPU required tight model quantization without degrading embedding quality. We also built graceful fallback heuristic encoders for emulator testing, so the full pipeline stays testable without physical hardware.</div>
         </div>
         <div class="cs-stack">
           <span class="tag"><i class="devicon-kotlin-plain"></i>Kotlin</span>
@@ -725,44 +693,131 @@
           <span class="tag"><i class="devicon-python-plain"></i>Python</span>
         </div>
       </div>
-
-      <div class="case-study reveal" id="cs-puzzlelab">
+      <div class="case-study reveal" id="cs-shrinkdb">
         <div class="cs-top">
           <div>
             <div class="cs-num">Case Study 02</div>
-            <div class="cs-title">Puzzle Lab</div>
-            <div class="cs-subtitle">Full-stack crossword puzzle platform · Team of 6 · UW–Madison</div>
+            <div class="cs-title">ShrinkDB</div>
+            <div class="cs-subtitle">A deduplicating, replicated key-value store in C++17 · Solo project</div>
           </div>
-          <a href="https://github.com/DhruvArora02/PuzzleLab_App" target="_blank" class="cs-github">↗ GitHub</a>
+          <a href="https://github.com/DhruvArora02/shrinkdb" target="_blank" class="cs-github">↗ GitHub</a>
         </div>
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">A full-stack web app where users create crossword puzzles from scratch, fill in words and clues on a custom grid, save puzzles to their account, and play them back interactively. Built as a software engineering course project with a team of six.</div>
+            <div class="cs-block-text">ShrinkDB is a storage engine I built from scratch in C++17 that solves the same core problem real backup and storage systems face. Most new data is not actually new. If you back up the same set of files every day, 95% of each backup is identical to the last one, so instead of writing a full copy every time, ShrinkDB breaks values into content-defined chunks using a rolling hash, stores each unique chunk exactly once with reference counting, and reclaims space automatically once nothing points to a chunk anymore. It is not a toy demo of one data structure. It is a small but complete systems stack, durability through a write-ahead log, concurrency through a background garbage-collection thread, and live replication over raw TCP sockets between a primary and a replica node, all working together at the same time.</div>
           </div>
           <div>
-            <div class="cs-block-label">My role</div>
-            <div class="cs-block-text">Worked across the entire stack — contributing to the Next.js frontend, Quarkus Java backend, MySQL schema design, REST API integration, JWT-based authentication, and the Docker setup for local development. Not siloed to one layer.</div>
+            <div class="cs-block-label">The pipeline</div>
+            <div class="cs-block-text">I designed and built every layer myself, the chunker, the content-addressed chunk store, the write-ahead log, the engine that ties them together, and the replication protocol. The flow is straightforward to describe but not simple to get right. A put call runs the value through the rolling-hash chunker, checks each resulting chunk against a hash table to see if it is already stored, appends the operation to the write-ahead log before touching any in-memory state so a crash mid-write cannot corrupt anything, and then updates the key's index.</div>
           </div>
         </div>
         <div class="cs-insight">
-          <div class="cs-insight-label">The hardest part</div>
-          <div class="cs-insight-text">The trickiest part wasn't the technology — it was coordination. With six people touching the same codebase, merge conflicts were constant, especially around shared components and API contracts. We established clearer branch conventions and agreed on interface contracts early to stop stepping on each other. It changed how I think about team architecture decisions before writing any code.</div>
+          <div class="cs-insight-label">Key technical decision</div>
+          <div class="cs-insight-text">The single decision that shaped everything downstream was choosing content-defined chunking over fixed-size chunking. Fixed-size chunks are simpler to implement, but a single byte inserted at the start of a file shifts every chunk boundary after it, destroying dedup opportunities. Rolling-hash chunking lets boundaries move with the content instead of a fixed offset, so a local edit only disturbs nearby chunks, the same idea used in tools like restic and rsync, and the reason the benchmark numbers, a 6.1x dedup ratio and 83.7% space saved, hold up even under simulated edits and not just identical repeated data. The hardest part was making concurrency and correctness meet in the middle. The background reclaimer thread sweeps and deletes chunks while foreground reads and writes are happening at the same time, and getting the locking right so a chunk never gets reclaimed while a read is still in progress took several rounds of multithreaded testing before I trusted it. An early correctness test also used synthetic data that was too periodic, which fought the rolling hash's boundary distribution and produced a false failure that looked like a real bug for a while, a reminder that test data quality matters as much as the code under test. The next steps are replaying write-ahead log history to a replica on connect, since replicas currently only see live writes going forward, and moving the in-memory key index to an on-disk structure like an LSM-tree so recovery time does not grow linearly with log size.</div>
         </div>
         <div class="cs-stack">
-          <span class="tag"><i class="devicon-nextjs-plain"></i>Next.js</span>
-          <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
-          <span class="tag"><i class="devicon-java-plain"></i>Quarkus</span>
-          <span class="tag"><i class="devicon-mysql-plain"></i>MySQL</span>
-          <span class="tag">JWT Auth</span><span class="tag">REST APIs</span>
-          <span class="tag"><i class="devicon-docker-plain"></i>Docker</span>
+          <span class="tag">C++17</span>
+          <span class="tag">Multithreading</span>
+          <span class="tag">TCP Sockets</span>
+          <span class="tag">Write-Ahead Log</span>
+          <span class="tag">Content-Defined Chunking</span>
         </div>
       </div>
-
+      <div class="case-study reveal" id="cs-dialmcp">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 03 · In Progress</div>
+            <div class="cs-title">DialMCP</div>
+            <div class="cs-subtitle">MCP server for agentic telephony actions · Solo project · Twilio + Anthropic API</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/dialmcp" target="_blank" class="cs-github">↗ GitHub</a>
+        </div>
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">DialMCP is an MCP (Model Context Protocol) server that gives an AI agent the ability to take real-world telephony actions, sending texts, placing voice calls, and checking whether they actually reached the recipient, rather than just generating text that describes doing so. Built on Twilio for the telephony layer and the Anthropic API for the agent, it exposes three tools, send_sms, make_call, and check_delivery_status, that Claude can invoke autonomously from a plain language instruction like "text this customer their order shipped," turning a sentence into a real message on a real phone within seconds.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">Why this is unique</div>
+            <div class="cs-block-text">Most MCP server demos wrap read-only APIs, search, lookup, fetch, where a mistake just means a wrong answer in a chat window. DialMCP is unusual in that it wraps an action with a real, irreversible, real-world consequence, a stranger's phone actually rings or buzzes. That shift forces a different level of care than a typical "give the LLM a tool" project. Validation, error handling, and the agent's understanding of what success even means all have to be treated more seriously once the output leaves the sandbox of a conversation and becomes something a real person experiences.</div>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <div class="cs-insight-label">Hardest part</div>
+          <div class="cs-insight-text">The most unexpectedly deep part of the build was error classification, turning Twilio's raw numeric error codes (21608, 21610, 20429, 21614, and more) into messages an agent could actually reason about or explain to a user. A naive implementation would just let a raw exception bubble up as "something went wrong." Instead, each code needed to be mapped to its actual cause, an unverified trial account number, an opted-out recipient, a rate limit, a non-mobile number, so the agent's response to a failure is specific and actionable rather than an opaque error dump. Closely tied to this was the realization that "sent successfully" and "actually delivered" are two different states entirely. Twilio can accept and queue a message while the carrier silently drops it downstream, which is why check_delivery_status exists as a distinct step rather than an afterthought.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag">MCP</span>
+          <span class="tag">Twilio</span>
+          <span class="tag">Anthropic API</span>
+        </div>
+      </div>
+      <div class="case-study reveal" id="cs-jobleadradar">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 04</div>
+            <div class="cs-title">Job Lead Radar</div>
+            <div class="cs-subtitle">Personal job search automation agent · Solo project · Internal tool</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/job-lead-radar" target="_blank" class="cs-github">↗ GitHub</a>
+        </div>
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">Job Lead Radar is an agent I built for my own job search. It polls company career-page APIs, Greenhouse and Lever, for new postings, filters them against configurable title rules, scores each one for relevance against my resume using Claude, and writes a ranked daily digest. Instead of manually re-checking a dozen company career pages and LinkedIn every day, I run one command each morning and get a sorted shortlist, company, title, location, relevance score, one-sentence reasoning, and a model-assessed seniority tag, with everything already deduplicated against postings I have already seen. Right now it is purely an internal tool I use myself, not a product, no UI, just a CLI and a markdown digest I read each morning.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">Why this is unique</div>
+            <div class="cs-block-text">Most job-tracking tools are either simple keyword-matching scrapers or thin wrappers around LinkedIn scraping, which risks account bans since LinkedIn's terms explicitly prohibit that kind of automation. Job Lead Radar deliberately stays inside official, public APIs, Greenhouse and Lever expose structured job data legitimately, and instead of stopping at keyword filtering, it uses an LLM to actually read each posting's full description and judge fit and seniority level, catching cases a title alone would miss, for example a posting that says "Software Engineer, Kubernetes" but reads as a senior role once you read the requirements. It is also intentionally not an auto-apply or auto-outreach bot. Every decision to reach out stays human in the loop, which keeps it both compliant and honest as a tool rather than spam.</div>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <div class="cs-insight-label">Hardest part</div>
+          <div class="cs-insight-text">The trickiest part was not the scoring. It was getting the filtering logic actually correct before trusting it to discard data permanently. A naive substring exclude list, using "iv" to catch "Engineer IV," silently matched unrelated words like "Delivery" and "Hawaii," which would have quietly deleted good postings with zero visibility into what was lost. Fixing this meant switching to whole-word matching with regression tests for exactly those collision cases, plus building a dry-run mode that shows the full list of what would be deleted, annotated with which filter term caught it, before anything actually gets removed from the database. That verify-before-delete discipline mattered more here than in a typical project, since the cost of a silent false positive is a good job lead you never even know you missed.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag"><i class="devicon-python-plain"></i>Python</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">Greenhouse API</span>
+          <span class="tag">Lever API</span>
+          <span class="tag">CLI</span>
+        </div>
+      </div>
+      <div class="case-study reveal" id="cs-nyctaxi">
+        <div class="cs-top">
+          <div>
+            <div class="cs-num">Case Study 05 · In Progress</div>
+            <div class="cs-title">NYC Taxi Analysis</div>
+            <div class="cs-subtitle">Batch data pipeline on NYC TLC trip data · Solo project · Migrating to Snowflake</div>
+          </div>
+          <a href="https://github.com/DhruvArora02/NYC_Taxi_Analysis" target="_blank" class="cs-github">↗ GitHub</a>
+        </div>
+        <div class="cs-body">
+          <div>
+            <div class="cs-block-label">What it is</div>
+            <div class="cs-block-text">It is a batch data pipeline and analytics project built on the official NYC TLC yellow taxi dataset, currently covering the January 2024 trip file, 2,964,624 raw trips. PySpark cleans and reshapes the data, the result is stored in Delta Lake, and three things run on top of that, a Spark SQL aggregation of top pickup zones by average fare, a seaborn bar chart, and an MLlib linear regression that predicts fare from passenger count, trip distance, and trip duration. The cleaning stage maps TLC's raw column names into a friendlier schema, joins the integer zone IDs against the official Taxi Zone Lookup so locations read as JFK Airport rather than a raw code, drops rows with nulls in critical fields, filters out non-positive fares and distances and inverted timestamps, and derives a trip duration column. 2,754,407 rows, 92.9%, survive the filters.</div>
+          </div>
+          <div>
+            <div class="cs-block-label">Migrating to Snowflake</div>
+            <div class="cs-block-text">The project's current direction is moving the SQL and warehousing layer from Delta Lake to Snowflake, while deliberately keeping the PySpark cleaning steps unchanged. The notebook runs end to end locally against all 2.96 million rows, executed through nbconvert with every cell's output confirmed. Getting there meant building out the local runtime itself, Java 17, PySpark pinned to 4.1.1 to match delta-spark 4.3.1's ceiling, Delta jars copied in to sidestep dependency resolution, Hadoop's native libraries set up for local writes on Windows, and a hand-applied patch for an unreleased upstream Spark fix, without which every Python worker crashes on Windows with Python 3.12 and newer. That patch lives inside the PySpark install itself, so a plain pip reinstall silently reverts it, which is documented in the README as a known trap.</div>
+          </div>
+        </div>
+        <div class="cs-insight">
+          <div class="cs-insight-label">Where it stands</div>
+          <div class="cs-insight-text">An export script reproduces the cleaning pipeline and writes twelve flat, time-ordered parquet files, 53.4 MB, verified at exactly 2,754,407 rows, and a load script contains the table definition, stage and file-format setup, and the copy and validation steps. None of that has been run against a live Snowflake account yet, so the table definition, the file path, and the column-mapping behavior are untested assumptions rather than verified behavior. Once that load succeeds, the notebook's SQL cells still need to be repointed from the Delta temp view to Snowflake, which is the actual migration. A few other things are potential improvements rather than active work right now. The MLlib model has no evaluation at all, no RMSE, no R squared, and the sample predictions are suspicious, it predicts roughly $14.50 for every trip including near-zero-distance ones, meaning the intercept is dominating and the model is not really learning yet. The pipeline also only handles a single month with a hardcoded filename, so multi-month and incremental loading remain open, and a handful of data quality edges, fares as low as $0.01 and a few timestamps well outside January 2024, are real artifacts in the TLC file that currently pass through untouched.</div>
+        </div>
+        <div class="cs-stack">
+          <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
+          <span class="tag">Delta Lake</span><span class="tag">Snowflake</span>
+          <span class="tag">Databricks</span><span class="tag">Spark SQL</span>
+          <span class="tag">MLlib</span><span class="tag">Seaborn</span>
+        </div>
+      </div>
       <div class="case-study reveal" id="cs-nominate">
         <div class="cs-top">
           <div>
-            <div class="cs-num">Case Study 03</div>
+            <div class="cs-num">Case Study 06</div>
             <div class="cs-title">NOMinate — Smart Meal Planner</div>
             <div class="cs-subtitle">Full-stack personal project · React + Flask + OpenAI</div>
           </div>
@@ -775,12 +830,12 @@
           </div>
           <div>
             <div class="cs-block-label">My role</div>
-            <div class="cs-block-text">Built the full stack end-to-end — React frontend, Flask backend, and OpenAI GPT-3.5 for generating recommendations, ingredient lists, and restaurant suggestions based on user preferences and feedback history.</div>
+            <div class="cs-block-text">Built the full stack end-to-end, React frontend, Flask backend, and OpenAI GPT-3.5 for generating recommendations, ingredient lists, and restaurant suggestions based on user preferences and feedback history.</div>
           </div>
         </div>
         <div class="cs-insight">
           <div class="cs-insight-label">Key challenge</div>
-          <div class="cs-insight-text">The interesting engineering problem was prompt design — structuring the OpenAI calls so recommendations stay personalized and non-repetitive across sessions while respecting dietary restrictions. A naive prompt gives you the same 5 meals every time. The solution was injecting recent history and explicit dislike signals into each prompt so the model has enough context to avoid repetition without needing a database of embeddings.</div>
+          <div class="cs-insight-text">The interesting engineering problem was prompt design. Structuring the OpenAI calls so recommendations stay personalized and non-repetitive across sessions while respecting dietary restrictions was key. A naive prompt gives you the same 5 meals every time. The solution was injecting recent history and explicit dislike signals into each prompt so the model has enough context to avoid repetition without needing a database of embeddings.</div>
         </div>
         <div class="cs-stack">
           <span class="tag"><i class="devicon-react-plain"></i>React</span>
@@ -790,41 +845,40 @@
           <span class="tag">Axios</span>
         </div>
       </div>
-
-      <div class="case-study reveal" id="cs-nyctaxi">
+      <div class="case-study reveal" id="cs-puzzlelab">
         <div class="cs-top">
           <div>
-            <div class="cs-num">Case Study 04</div>
-            <div class="cs-title">NYC Taxi Analysis</div>
-            <div class="cs-subtitle">End-to-end data engineering & ML pipeline · Solo project · Databricks</div>
+            <div class="cs-num">Case Study 07</div>
+            <div class="cs-title">Puzzle Lab</div>
+            <div class="cs-subtitle">Full-stack crossword puzzle platform · Team of 6 · UW–Madison</div>
           </div>
-          <a href="https://github.com/DhruvArora02/NYC_Taxi_Analysis" target="_blank" class="cs-github">↗ GitHub</a>
+          <a href="https://github.com/DhruvArora02/PuzzleLab_App" target="_blank" class="cs-github">↗ GitHub</a>
         </div>
         <div class="cs-body">
           <div>
             <div class="cs-block-label">What it is</div>
-            <div class="cs-block-text">An end-to-end data engineering pipeline built solo on Databricks, processing NYC Yellow Taxi trip data across tens of millions of rows. Ingests raw parquet files, cleans and transforms with PySpark, stores in Delta Lake, runs SQL analytics, and trains a linear regression model to predict taxi fares.</div>
+            <div class="cs-block-text">A full-stack web app where users create crossword puzzles from scratch, fill in words and clues on a custom grid, save puzzles to their account, and play them back interactively. Built as a software engineering course project with a team of six.</div>
           </div>
           <div>
-            <div class="cs-block-label">Why it's interesting</div>
-            <div class="cs-block-text">The goal was to go beyond a notebook exercise and mirror a real production workflow — versioned storage with Delta Lake, reproducible ETL, and a model that trains distributed across the cluster rather than pulling data into memory. At tens of millions of rows, every transformation decision has cost.</div>
+            <div class="cs-block-label">My role</div>
+            <div class="cs-block-text">Worked across the entire stack, contributing to the Next.js frontend, Quarkus Java backend, MySQL schema design, REST API integration, JWT-based authentication, and the Docker setup for local development. Not siloed to one layer.</div>
           </div>
         </div>
         <div class="cs-insight">
-          <div class="cs-insight-label">Key technical decision</div>
-          <div class="cs-insight-text">Using Delta Lake over raw parquet was deliberate — it gives ACID transactions and time travel on processed data, which matters when iterating on cleaning logic without re-running full ingestion every time. The MLlib linear regression model predicts fare amount from trip distance, duration, passenger count, and pickup location — the interesting part is that training runs distributed across the cluster rather than on a single machine.</div>
+          <div class="cs-insight-label">The hardest part</div>
+          <div class="cs-insight-text">The trickiest part was not the technology. It was coordination. With six people touching the same codebase, merge conflicts were constant, especially around shared components and API contracts. We established clearer branch conventions and agreed on interface contracts early to stop stepping on each other. It changed how I think about team architecture decisions before writing any code.</div>
         </div>
         <div class="cs-stack">
-          <span class="tag"><i class="devicon-python-plain"></i>PySpark</span>
-          <span class="tag">Delta Lake</span><span class="tag">Databricks</span>
-          <span class="tag">Spark SQL</span><span class="tag">MLlib</span>
-          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+          <span class="tag"><i class="devicon-nextjs-plain"></i>Next.js</span>
+          <span class="tag"><i class="devicon-typescript-plain"></i>TypeScript</span>
+          <span class="tag"><i class="devicon-java-plain"></i>Quarkus</span>
+          <span class="tag"><i class="devicon-mysql-plain"></i>MySQL</span>
+          <span class="tag">JWT Auth</span><span class="tag">REST APIs</span>
+          <span class="tag"><i class="devicon-docker-plain"></i>Docker</span>
         </div>
       </div>
-
     </div>
   </section>
-
   <!-- CONTACT -->
   <section id="contact" style="border-bottom: none;">
     <div class="contact-grid reveal">
@@ -832,7 +886,7 @@
         <div class="section-label">Contact</div>
         <div class="contact-headline">Let's build<br>something <em>great</em></div>
         <p class="contact-sub" style="margin-top: 16px;">
-          Graduating May 2026. Open to full-time roles in software engineering, data engineering, and applied AI. Based in Madison, WI — open to relocating.
+          Graduated May 2026. Open to full-time roles in software engineering, data engineering, and applied AI. Based in Madison, WI, and open to relocating.
         </p>
       </div>
       <div class="contact-links">
@@ -859,14 +913,11 @@
       </div>
     </div>
   </section>
-
 </div>
-
 <footer>
   <span>Dhruv Arora · 2026</span>
   <span>Madison, WI · UW–Madison</span>
 </footer>
-
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -879,7 +930,6 @@
     });
   }, { threshold: 0.07 });
   reveals.forEach(el => revealObserver.observe(el));
-
   // Scroll progress bar
   const progress = document.getElementById('scrollProgress');
   window.addEventListener('scroll', () => {
@@ -888,7 +938,6 @@
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     progress.style.width = pct + '%';
   });
-
   // Active nav highlight
   const sections = ['about', 'experience', 'projects', 'contact'];
   const navLinks = document.querySelectorAll('.nav-links a[data-section]');
